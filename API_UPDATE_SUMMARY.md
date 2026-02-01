@@ -1,14 +1,17 @@
 # API Update Summary
 
 ## Overview
+
 Updated frontend to match actual backend API endpoints and schema. This document summarizes all changes made to align the frontend with the backend specification.
 
 ## Date
+
 December 2024
 
 ## Major Changes
 
 ### 1. API Configuration (`lib/api/config.ts`)
+
 - ✅ Updated `BASE_URL` from `http://localhost:8080/api/v1` to `http://localhost:3000`
 - ✅ Added comprehensive endpoint configuration for all backend modules:
   - AUTH endpoints (signin, refresh, profile, change-password, etc.)
@@ -25,6 +28,7 @@ December 2024
   - UPLOAD endpoints (file, files, document, video)
 
 ### 2. Type Definitions (`lib/api/types.ts`)
+
 - ✅ Updated `User` interface:
   - Changed `firstName` + `lastName` to `fullName`
   - Added `username` field
@@ -41,6 +45,7 @@ December 2024
 - ✅ Updated `Media`, `Notification`, and other interfaces
 
 ### 3. API Services (`lib/api/services.ts`)
+
 - ✅ Updated `authService.signUp()` to use `API_CONFIG.ENDPOINTS.USERS.REGISTER` instead of `AUTH.SIGNUP`
 - ✅ Updated `accidentService.reportAccident()` to `createAccident()` using `API_CONFIG.ENDPOINTS.ACCIDENTS.BASE`
 - ✅ Added new service methods for all backend endpoints
@@ -51,6 +56,7 @@ December 2024
 ### 4. Authentication Pages
 
 #### Sign Up Page (`app/auth/signup/page.tsx`)
+
 - ✅ Changed form fields from `firstName` + `lastName` to `fullName` + `username`
 - ✅ Updated field validation and labels
 - ✅ Updated form submission to send new schema
@@ -58,11 +64,13 @@ December 2024
 ### 5. Dashboard & Layouts
 
 #### Dashboard Layout (`components/layouts/dashboard-layout.tsx`)
+
 - ✅ Updated user display to show `fullName` instead of `firstName + lastName`
 - ✅ Updated avatar initials to use first letter of `fullName`
 - ✅ Updated welcome message to use first name from `fullName`
 
 #### Dashboard Page (`app/dashboard/page.tsx`)
+
 - ✅ Updated severity switch statements to use string literals ('critical', 'severe', 'moderate', 'minor')
 - ✅ Changed `accident.location?.address` to `accident.locationAddress`
 - ✅ Changed `accident.reportedAt` to `accident.createdAt`
@@ -70,6 +78,7 @@ December 2024
 ### 6. Accident Management
 
 #### Accident Report Form (`app/accidents/report/page.tsx`)
+
 - ✅ Updated form fields to include all required backend fields:
   - `locationAddress` (instead of `address`)
   - `accidentDate`
@@ -83,6 +92,7 @@ December 2024
 - ✅ Updated location detection to set `locationAddress`
 
 #### Accidents List (`app/accidents/list/page.tsx`)
+
 - ✅ Updated severity and status switch statements to use string literals
 - ✅ Changed column accessor from `location.address` to `locationAddress`
 - ✅ Removed `severityScore` reference (not in backend schema)
@@ -90,6 +100,7 @@ December 2024
 ## Backend Endpoint Mapping
 
 ### Authentication
+
 - POST `/auth/signin` - Sign in with email/password
 - POST `/auth/refresh` - Refresh access token
 - GET `/auth/profile` - Get user profile
@@ -100,6 +111,7 @@ December 2024
 - POST `/auth/logout` - Logout user
 
 ### Users
+
 - POST `/users` - Register new user
 - GET `/users` - List all users
 - GET `/users/:id` - Get user by ID
@@ -112,6 +124,7 @@ December 2024
 - GET `/users/stats` - Get user statistics
 
 ### Accidents
+
 - POST `/accidents` - Create accident report
 - GET `/accidents` - List all accidents
 - GET `/accidents/:id` - Get accident by ID
@@ -125,6 +138,7 @@ December 2024
 - GET `/accidents/statistics` - Get statistics
 
 ### Vehicles
+
 - POST `/vehicles` - Create vehicle
 - GET `/vehicles` - List vehicles
 - GET `/vehicles/:id` - Get vehicle by ID
@@ -134,6 +148,7 @@ December 2024
 - GET `/vehicles/plate/:licensePlate` - Search by plate
 
 ### AI Services
+
 - POST `/ai/analyze-accident` - Analyze accident with AI
 - POST `/ai/generate-report` - Generate AI report
 - POST `/ai/extract-text` - Extract text from images
@@ -141,6 +156,7 @@ December 2024
 - GET `/ai/insights/:accidentId` - Get AI insights
 
 ### Dispatch
+
 - POST `/dispatch/emergency` - Dispatch emergency services
 - GET `/dispatch/status/:accidentId` - Get dispatch status
 - PATCH `/dispatch/:accidentId/status` - Update status
@@ -150,6 +166,7 @@ December 2024
 - PATCH `/dispatch/:accidentId/assign` - Assign responder
 
 ### File Upload
+
 - POST `/upload/file` - Upload single file
 - POST `/upload/files` - Upload multiple files
 - POST `/upload/document` - Upload document
@@ -160,6 +177,7 @@ December 2024
 ## Schema Changes Summary
 
 ### User Schema
+
 ```typescript
 // Before
 {
@@ -177,19 +195,22 @@ December 2024
 ```
 
 ### Accident Schema
+
 ```typescript
 // Before
 {
-  severity: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
-  status: 'REPORTED' | 'DISPATCHED' | 'IN_PROGRESS' | 'RESOLVED' | 'CLOSED';
-  location: { address: string };
+  severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+  status: "REPORTED" | "DISPATCHED" | "IN_PROGRESS" | "RESOLVED" | "CLOSED";
+  location: {
+    address: string;
+  }
   reportedAt: string;
 }
 
 // After
 {
-  severity: 'minor' | 'moderate' | 'severe' | 'critical';
-  status: 'pending' | 'in_progress' | 'under_review' | 'completed' | 'closed';
+  severity: "minor" | "moderate" | "severe" | "critical";
+  status: "pending" | "in_progress" | "under_review" | "completed" | "closed";
   locationAddress: string;
   createdAt: string;
   accidentDate: string;
@@ -243,6 +264,7 @@ December 2024
 ## Migration Path
 
 If you have existing data:
+
 1. Backend must handle both old and new user schemas during transition
 2. Accident data needs migration to add new required fields
 3. Consider adding default values for new required fields

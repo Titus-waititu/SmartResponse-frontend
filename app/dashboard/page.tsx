@@ -34,13 +34,13 @@ export default function DashboardPage() {
 
   const getSeverityColor = (severity: AccidentSeverity) => {
     switch (severity) {
-      case 'critical':
+      case "critical":
         return "text-red-600 bg-red-50";
-      case 'severe':
+      case "severe":
         return "text-orange-600 bg-orange-50";
-      case 'moderate':
+      case "moderate":
         return "text-yellow-600 bg-yellow-50";
-      case 'minor':
+      case "minor":
         return "text-green-600 bg-green-50";
       default:
         return "text-gray-600 bg-gray-50";

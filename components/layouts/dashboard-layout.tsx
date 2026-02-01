@@ -117,7 +117,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         {/* Header */}
         <header className="h-16 bg-white shadow-sm flex items-center justify-between px-8">
           <h2 className="text-2xl font-semibold text-gray-800">
-            Welcome back, {user?.fullName?.split(' ')[0]}!
+            Welcome back, {user?.fullName?.split(" ")[0]}!
           </h2>
           <button className="relative p-2 rounded-lg hover:bg-gray-100">
             <Bell size={24} className="text-gray-600" />

@@ -64,13 +64,13 @@ export default function AccidentsListPage() {
 
   const getSeverityColor = (severity: AccidentSeverity) => {
     switch (severity) {
-      case 'critical':
+      case "critical":
         return "bg-red-100 text-red-800 border-red-200";
-      case 'severe':
+      case "severe":
         return "bg-orange-100 text-orange-800 border-orange-200";
-      case 'moderate':
+      case "moderate":
         return "bg-yellow-100 text-yellow-800 border-yellow-200";
-      case 'minor':
+      case "minor":
         return "bg-green-100 text-green-800 border-green-200";
       default:
         return "bg-gray-100 text-gray-800 border-gray-200";
@@ -79,15 +79,15 @@ export default function AccidentsListPage() {
 
   const getStatusColor = (status: AccidentStatus) => {
     switch (status) {
-      case 'pending':
+      case "pending":
         return "bg-blue-100 text-blue-800";
-      case 'in_progress':
+      case "in_progress":
         return "bg-purple-100 text-purple-800";
-      case 'under_review':
+      case "under_review":
         return "bg-yellow-100 text-yellow-800";
-      case 'completed':
+      case "completed":
         return "bg-green-100 text-green-800";
-      case 'closed':
+      case "closed":
         return "bg-gray-100 text-gray-800";
       default:
         return "bg-gray-100 text-gray-800";
