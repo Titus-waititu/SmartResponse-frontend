@@ -3,16 +3,16 @@
  * User authentication with email and password
  */
 
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useForm } from '@tanstack/react-form';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { authService } from '@/lib/api';
-import { useAuthStore } from '@/lib/stores/auth.store';
-import toast from 'react-hot-toast';
-import { AlertCircle, Mail, Lock, Chrome } from 'lucide-react';
+import { useState } from "react";
+import { useForm } from "@tanstack/react-form";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { authService } from "@/lib/api";
+import { useAuthStore } from "@/lib/stores/auth.store";
+import toast from "react-hot-toast";
+import { AlertCircle, Mail, Lock, Chrome } from "lucide-react";
 
 export default function SignInPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,18 +21,18 @@ export default function SignInPage() {
 
   const form = useForm({
     defaultValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     onSubmit: async ({ value }) => {
       setIsLoading(true);
       try {
         const response = await authService.signIn(value);
         setAuth(response.user, response.accessToken, response.refreshToken);
-        toast.success('Successfully signed in!');
-        router.push('/dashboard');
+        toast.success("Successfully signed in!");
+        router.push("/dashboard");
       } catch (error: any) {
-        toast.error(error.response?.data?.message || 'Failed to sign in');
+        toast.error(error.response?.data?.message || "Failed to sign in");
       } finally {
         setIsLoading(false);
       }
@@ -72,9 +72,9 @@ export default function SignInPage() {
               name="email"
               validators={{
                 onChange: ({ value }) => {
-                  if (!value) return 'Email is required';
+                  if (!value) return "Email is required";
                   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                    return 'Invalid email address';
+                    return "Invalid email address";
                   }
                   return undefined;
                 },
@@ -101,7 +101,7 @@ export default function SignInPage() {
                   </div>
                   {field.state.meta.errors && (
                     <p className="mt-1 text-sm text-red-600">
-                      {field.state.meta.errors.join(', ')}
+                      {field.state.meta.errors.join(", ")}
                     </p>
                   )}
                 </div>
@@ -113,9 +113,9 @@ export default function SignInPage() {
               name="password"
               validators={{
                 onChange: ({ value }) => {
-                  if (!value) return 'Password is required';
+                  if (!value) return "Password is required";
                   if (value.length < 6) {
-                    return 'Password must be at least 6 characters';
+                    return "Password must be at least 6 characters";
                   }
                   return undefined;
                 },
@@ -142,7 +142,7 @@ export default function SignInPage() {
                   </div>
                   {field.state.meta.errors && (
                     <p className="mt-1 text-sm text-red-600">
-                      {field.state.meta.errors.join(', ')}
+                      {field.state.meta.errors.join(", ")}
                     </p>
                   )}
                 </div>
@@ -155,7 +155,7 @@ export default function SignInPage() {
               disabled={isLoading}
               className="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
-              {isLoading ? 'Signing in...' : 'Sign In'}
+              {isLoading ? "Signing in..." : "Sign In"}
             </button>
           </form>
 
@@ -165,7 +165,9 @@ export default function SignInPage() {
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">Or continue with</span>
+              <span className="px-2 bg-white text-gray-500">
+                Or continue with
+              </span>
             </div>
           </div>
 
@@ -181,8 +183,11 @@ export default function SignInPage() {
 
           {/* Sign Up Link */}
           <p className="mt-6 text-center text-sm text-gray-600">
-            Don't have an account?{' '}
-            <Link href="/auth/signup" className="text-red-600 font-medium hover:text-red-700">
+            Don't have an account?{" "}
+            <Link
+              href="/auth/signup"
+              className="text-red-600 font-medium hover:text-red-700"
+            >
               Sign Up
             </Link>
           </p>

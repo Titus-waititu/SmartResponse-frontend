@@ -5,9 +5,9 @@
 
 // User Types
 export enum UserRole {
-  ADMIN = 'ADMIN',
-  RESPONDER = 'RESPONDER',
-  USER = 'USER',
+  ADMIN = "ADMIN",
+  RESPONDER = "RESPONDER",
+  USER = "USER",
 }
 
 export interface User {
@@ -43,18 +43,18 @@ export interface SignInRequest {
 
 // Accident Types
 export enum AccidentSeverity {
-  LOW = 'LOW',
-  MEDIUM = 'MEDIUM',
-  HIGH = 'HIGH',
-  CRITICAL = 'CRITICAL',
+  LOW = "LOW",
+  MEDIUM = "MEDIUM",
+  HIGH = "HIGH",
+  CRITICAL = "CRITICAL",
 }
 
 export enum AccidentStatus {
-  REPORTED = 'REPORTED',
-  DISPATCHED = 'DISPATCHED',
-  IN_PROGRESS = 'IN_PROGRESS',
-  RESOLVED = 'RESOLVED',
-  CLOSED = 'CLOSED',
+  REPORTED = "REPORTED",
+  DISPATCHED = "DISPATCHED",
+  IN_PROGRESS = "IN_PROGRESS",
+  RESOLVED = "RESOLVED",
+  CLOSED = "CLOSED",
 }
 
 export interface Accident {
@@ -117,15 +117,15 @@ export interface Vehicle {
 
 // Emergency Service Types
 export enum ServiceType {
-  POLICE = 'POLICE',
-  AMBULANCE = 'AMBULANCE',
-  FIRE_DEPARTMENT = 'FIRE_DEPARTMENT',
+  POLICE = "POLICE",
+  AMBULANCE = "AMBULANCE",
+  FIRE_DEPARTMENT = "FIRE_DEPARTMENT",
 }
 
 export enum ServiceStatus {
-  AVAILABLE = 'AVAILABLE',
-  BUSY = 'BUSY',
-  OFFLINE = 'OFFLINE',
+  AVAILABLE = "AVAILABLE",
+  BUSY = "BUSY",
+  OFFLINE = "OFFLINE",
 }
 
 export interface EmergencyService {
@@ -144,12 +144,12 @@ export interface EmergencyService {
 
 // Dispatch Types
 export enum DispatchStatus {
-  PENDING = 'PENDING',
-  ACCEPTED = 'ACCEPTED',
-  EN_ROUTE = 'EN_ROUTE',
-  ON_SCENE = 'ON_SCENE',
-  COMPLETED = 'COMPLETED',
-  CANCELLED = 'CANCELLED',
+  PENDING = "PENDING",
+  ACCEPTED = "ACCEPTED",
+  EN_ROUTE = "EN_ROUTE",
+  ON_SCENE = "ON_SCENE",
+  COMPLETED = "COMPLETED",
+  CANCELLED = "CANCELLED",
 }
 
 export interface Dispatch {
@@ -168,9 +168,9 @@ export interface Dispatch {
 
 // Media Types
 export enum MediaType {
-  IMAGE = 'IMAGE',
-  VIDEO = 'VIDEO',
-  DOCUMENT = 'DOCUMENT',
+  IMAGE = "IMAGE",
+  VIDEO = "VIDEO",
+  DOCUMENT = "DOCUMENT",
 }
 
 export interface Media {
@@ -188,11 +188,11 @@ export interface Media {
 
 // Notification Types
 export enum NotificationType {
-  ACCIDENT_REPORTED = 'ACCIDENT_REPORTED',
-  DISPATCH_SENT = 'DISPATCH_SENT',
-  DISPATCH_ACCEPTED = 'DISPATCH_ACCEPTED',
-  DISPATCH_COMPLETED = 'DISPATCH_COMPLETED',
-  STATUS_UPDATE = 'STATUS_UPDATE',
+  ACCIDENT_REPORTED = "ACCIDENT_REPORTED",
+  DISPATCH_SENT = "DISPATCH_SENT",
+  DISPATCH_ACCEPTED = "DISPATCH_ACCEPTED",
+  DISPATCH_COMPLETED = "DISPATCH_COMPLETED",
+  STATUS_UPDATE = "STATUS_UPDATE",
 }
 
 export interface Notification {
@@ -222,7 +222,7 @@ export interface PaginationParams {
   page?: number;
   limit?: number;
   sortBy?: string;
-  sortOrder?: 'ASC' | 'DESC';
+  sortOrder?: "ASC" | "DESC";
 }
 
 export interface PaginatedResponse<T> {

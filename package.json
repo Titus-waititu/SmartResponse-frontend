@@ -13,6 +13,7 @@
     "@tanstack/react-router": "^1.157.18",
     "@tanstack/react-table": "^8.21.3",
     "axios": "^1.13.4",
+    "date-fns": "^4.1.0",
     "lucide-react": "^0.563.0",
     "next": "16.1.4",
     "react": "19.2.3",

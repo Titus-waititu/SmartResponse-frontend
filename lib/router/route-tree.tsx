@@ -3,8 +3,8 @@
  * Define all application routes
  */
 
-import { createRootRoute, createRoute } from '@tanstack/react-router';
-import { RootLayout } from '@/components/layouts/root-layout';
+import { createRootRoute, createRoute } from "@tanstack/react-router";
+import { RootLayout } from "@/components/layouts/root-layout";
 
 // Root route
 export const rootRoute = createRootRoute({
@@ -14,63 +14,63 @@ export const rootRoute = createRootRoute({
 // Public routes
 export const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/',
+  path: "/",
 });
 
 export const authRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'auth',
+  path: "auth",
 });
 
 export const signInRoute = createRoute({
   getParentRoute: () => authRoute,
-  path: 'signin',
+  path: "signin",
 });
 
 export const signUpRoute = createRoute({
   getParentRoute: () => authRoute,
-  path: 'signup',
+  path: "signup",
 });
 
 // Protected routes
 export const dashboardRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'dashboard',
+  path: "dashboard",
 });
 
 export const accidentsRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'accidents',
+  path: "accidents",
 });
 
 export const accidentReportRoute = createRoute({
   getParentRoute: () => accidentsRoute,
-  path: 'report',
+  path: "report",
 });
 
 export const accidentListRoute = createRoute({
   getParentRoute: () => accidentsRoute,
-  path: 'list',
+  path: "list",
 });
 
 export const accidentDetailRoute = createRoute({
   getParentRoute: () => accidentsRoute,
-  path: '$accidentId',
+  path: "$accidentId",
 });
 
 export const emergencyServicesRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'emergency-services',
+  path: "emergency-services",
 });
 
 export const vehiclesRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'vehicles',
+  path: "vehicles",
 });
 
 export const profileRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'profile',
+  path: "profile",
 });
 
 // Build the route tree

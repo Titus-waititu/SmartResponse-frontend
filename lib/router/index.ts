@@ -3,17 +3,17 @@
  * TanStack Router setup and route tree
  */
 
-import { createRouter } from '@tanstack/react-router';
-import { routeTree } from './route-tree';
+import { createRouter } from "@tanstack/react-router";
+import { routeTree } from "./route-tree";
 
 export const router = createRouter({
   routeTree,
-  defaultPreload: 'intent',
+  defaultPreload: "intent",
   defaultPreloadStaleTime: 0,
 });
 
 // Register router type for type safety
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface Register {
     router: typeof router;
   }

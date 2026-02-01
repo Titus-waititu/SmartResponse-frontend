@@ -3,12 +3,12 @@
  * Layout for authenticated pages with sidebar navigation
  */
 
-'use client';
+"use client";
 
-import { ReactNode, useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useAuthStore } from '@/lib/stores/auth.store';
+import { ReactNode, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/lib/stores/auth.store";
 import {
   LayoutDashboard,
   AlertCircle,
@@ -19,7 +19,7 @@ import {
   Menu,
   X,
   Bell,
-} from 'lucide-react';
+} from "lucide-react";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -32,16 +32,20 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
   const handleLogout = () => {
     clearAuth();
-    router.push('/auth/signin');
+    router.push("/auth/signin");
   };
 
   const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-    { name: 'Report Accident', href: '/accidents/report', icon: AlertCircle },
-    { name: 'Accidents', href: '/accidents/list', icon: AlertCircle },
-    { name: 'Emergency Services', href: '/emergency-services', icon: Ambulance },
-    { name: 'My Vehicles', href: '/vehicles', icon: Car },
-    { name: 'Profile', href: '/profile', icon: User },
+    { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+    { name: "Report Accident", href: "/accidents/report", icon: AlertCircle },
+    { name: "Accidents", href: "/accidents/list", icon: AlertCircle },
+    {
+      name: "Emergency Services",
+      href: "/emergency-services",
+      icon: Ambulance,
+    },
+    { name: "My Vehicles", href: "/vehicles", icon: Car },
+    { name: "Profile", href: "/profile", icon: User },
   ];
 
   return (
@@ -49,7 +53,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       {/* Sidebar */}
       <aside
         className={`${
-          isSidebarOpen ? 'w-64' : 'w-20'
+          isSidebarOpen ? "w-64" : "w-20"
         } bg-white shadow-lg transition-all duration-300 flex flex-col`}
       >
         {/* Logo */}
@@ -85,7 +89,8 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="border-t px-4 py-4">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-semibold">
-              {user?.firstName?.[0]}{user?.lastName?.[0]}
+              {user?.firstName?.[0]}
+              {user?.lastName?.[0]}
             </div>
             {isSidebarOpen && (
               <div className="flex-1">

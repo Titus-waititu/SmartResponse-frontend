@@ -3,16 +3,16 @@
  * Global state management for user authentication
  */
 
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import type { User } from '@/lib/api';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import type { User } from "@/lib/api";
 
 interface AuthState {
   user: User | null;
   accessToken: string | null;
   refreshToken: string | null;
   isAuthenticated: boolean;
-  
+
   // Actions
   setAuth: (user: User, accessToken: string, refreshToken: string) => void;
   clearAuth: () => void;
@@ -29,10 +29,10 @@ export const useAuthStore = create<AuthState>()(
 
       setAuth: (user, accessToken, refreshToken) => {
         // Also store in localStorage for API client
-        localStorage.setItem('accessToken', accessToken);
-        localStorage.setItem('refreshToken', refreshToken);
-        localStorage.setItem('user', JSON.stringify(user));
-        
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
+        localStorage.setItem("user", JSON.stringify(user));
+
         set({
           user,
           accessToken,
@@ -43,10 +43,10 @@ export const useAuthStore = create<AuthState>()(
 
       clearAuth: () => {
         // Clear localStorage
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
-        localStorage.removeItem('user');
-        
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        localStorage.removeItem("user");
+
         set({
           user: null,
           accessToken: null,
@@ -62,13 +62,13 @@ export const useAuthStore = create<AuthState>()(
       },
     }),
     {
-      name: 'auth-storage',
+      name: "auth-storage",
       partialize: (state) => ({
         user: state.user,
         accessToken: state.accessToken,
         refreshToken: state.refreshToken,
         isAuthenticated: state.isAuthenticated,
       }),
-    }
-  )
+    },
+  ),
 );
