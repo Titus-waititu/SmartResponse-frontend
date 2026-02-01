@@ -21,8 +21,8 @@ export default function SignUpPage() {
 
   const form = useForm({
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      fullName: "",
+      username: "",
       email: "",
       phoneNumber: "",
       password: "",
