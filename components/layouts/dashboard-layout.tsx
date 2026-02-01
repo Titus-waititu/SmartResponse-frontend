@@ -89,13 +89,12 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="border-t px-4 py-4">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-semibold">
-              {user?.firstName?.[0]}
-              {user?.lastName?.[0]}
+              {user?.fullName?.charAt(0)}
             </div>
             {isSidebarOpen && (
               <div className="flex-1">
                 <p className="text-sm font-medium text-gray-700">
-                  {user?.firstName} {user?.lastName}
+                  {user?.fullName}
                 </p>
                 <p className="text-xs text-gray-500">{user?.email}</p>
               </div>
@@ -118,7 +117,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         {/* Header */}
         <header className="h-16 bg-white shadow-sm flex items-center justify-between px-8">
           <h2 className="text-2xl font-semibold text-gray-800">
-            Welcome back, {user?.firstName}!
+            Welcome back, {user?.fullName?.split(' ')[0]}!
           </h2>
           <button className="relative p-2 rounded-lg hover:bg-gray-100">
             <Bell size={24} className="text-gray-600" />

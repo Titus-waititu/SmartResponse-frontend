@@ -34,13 +34,13 @@ export default function DashboardPage() {
 
   const getSeverityColor = (severity: AccidentSeverity) => {
     switch (severity) {
-      case AccidentSeverity.CRITICAL:
+      case 'critical':
         return "text-red-600 bg-red-50";
-      case AccidentSeverity.HIGH:
+      case 'severe':
         return "text-orange-600 bg-orange-50";
-      case AccidentSeverity.MEDIUM:
+      case 'moderate':
         return "text-yellow-600 bg-yellow-50";
-      case AccidentSeverity.LOW:
+      case 'minor':
         return "text-green-600 bg-green-50";
       default:
         return "text-gray-600 bg-gray-50";
@@ -178,7 +178,7 @@ export default function DashboardPage() {
                         {accident.description.substring(0, 50)}...
                       </h3>
                       <p className="text-sm text-gray-600 mt-1">
-                        {accident.location?.address || "Location not specified"}
+                        {accident.locationAddress || "Location not specified"}
                       </p>
                     </div>
                   </div>
@@ -191,7 +191,7 @@ export default function DashboardPage() {
                       {accident.severity}
                     </span>
                     <p className="text-sm text-gray-500 mt-2">
-                      {format(new Date(accident.reportedAt), "MMM dd, HH:mm")}
+                      {format(new Date(accident.createdAt), "MMM dd, HH:mm")}
                     </p>
                   </div>
                 </div>

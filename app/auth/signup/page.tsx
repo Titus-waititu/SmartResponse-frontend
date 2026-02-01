@@ -82,18 +82,18 @@ export default function SignUpPage() {
             }}
             className="space-y-5"
           >
-            {/* First Name */}
+            {/* Full Name */}
             <form.Field
-              name="firstName"
+              name="fullName"
               validators={{
                 onChange: ({ value }) =>
-                  !value ? "First name is required" : undefined,
+                  !value ? "Full name is required" : undefined,
               }}
             >
               {(field) => (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    First Name
+                    Full Name
                   </label>
                   <div className="relative">
                     <User
@@ -105,7 +105,7 @@ export default function SignUpPage() {
                       value={field.state.value}
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
-                      placeholder="John"
+                      placeholder="John Doe"
                       className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                     />
                   </div>
@@ -118,18 +118,18 @@ export default function SignUpPage() {
               )}
             </form.Field>
 
-            {/* Last Name */}
+            {/* Username */}
             <form.Field
-              name="lastName"
+              name="username"
               validators={{
                 onChange: ({ value }) =>
-                  !value ? "Last name is required" : undefined,
+                  !value ? "Username is required" : undefined,
               }}
             >
               {(field) => (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Last Name
+                    Username
                   </label>
                   <div className="relative">
                     <User
@@ -141,7 +141,7 @@ export default function SignUpPage() {
                       value={field.state.value}
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
-                      placeholder="Doe"
+                      placeholder="johndoe"
                       className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                     />
                   </div>

@@ -64,13 +64,13 @@ export default function AccidentsListPage() {
 
   const getSeverityColor = (severity: AccidentSeverity) => {
     switch (severity) {
-      case AccidentSeverity.CRITICAL:
+      case 'critical':
         return "bg-red-100 text-red-800 border-red-200";
-      case AccidentSeverity.HIGH:
+      case 'severe':
         return "bg-orange-100 text-orange-800 border-orange-200";
-      case AccidentSeverity.MEDIUM:
+      case 'moderate':
         return "bg-yellow-100 text-yellow-800 border-yellow-200";
-      case AccidentSeverity.LOW:
+      case 'minor':
         return "bg-green-100 text-green-800 border-green-200";
       default:
         return "bg-gray-100 text-gray-800 border-gray-200";
@@ -79,15 +79,15 @@ export default function AccidentsListPage() {
 
   const getStatusColor = (status: AccidentStatus) => {
     switch (status) {
-      case AccidentStatus.REPORTED:
+      case 'pending':
         return "bg-blue-100 text-blue-800";
-      case AccidentStatus.DISPATCHED:
+      case 'in_progress':
         return "bg-purple-100 text-purple-800";
-      case AccidentStatus.IN_PROGRESS:
+      case 'under_review':
         return "bg-yellow-100 text-yellow-800";
-      case AccidentStatus.RESOLVED:
+      case 'completed':
         return "bg-green-100 text-green-800";
-      case AccidentStatus.CLOSED:
+      case 'closed':
         return "bg-gray-100 text-gray-800";
       default:
         return "bg-gray-100 text-gray-800";
@@ -131,10 +131,10 @@ export default function AccidentsListPage() {
       },
     },
     {
-      accessorKey: "location.address",
+      accessorKey: "locationAddress",
       header: "Location",
       cell: ({ row }) => {
-        const address = row.original.location?.address || "N/A";
+        const address = row.original.locationAddress || "N/A";
         return (
           <span className="text-sm text-gray-700 max-w-xs truncate block">
             {address}
@@ -157,7 +157,6 @@ export default function AccidentsListPage() {
       },
       cell: ({ getValue, row }) => {
         const severity = getValue() as AccidentSeverity;
-        const score = row.original.severityScore;
         return (
           <div className="flex items-center gap-2">
             <span
@@ -167,7 +166,6 @@ export default function AccidentsListPage() {
             >
               {severity}
             </span>
-            <span className="text-xs text-gray-500">({score})</span>
           </div>
         );
       },

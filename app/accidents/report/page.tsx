@@ -43,8 +43,13 @@ export default function AccidentReportPage() {
       description: "",
       latitude: 0,
       longitude: 0,
-      address: "",
-      vehicleId: "",
+      locationAddress: "",
+      accidentDate: new Date().toISOString(),
+      numberOfVehicles: 1,
+      numberOfInjuries: 0,
+      numberOfFatalities: 0,
+      weatherConditions: "",
+      roadConditions: "",
     },
     onSubmit: async ({ value }) => {
       if (imageFiles.length === 0) {
@@ -54,12 +59,23 @@ export default function AccidentReportPage() {
 
       setIsLoading(true);
       try {
-        const reportData = {
-          ...value,
-          images: imageFiles,
-        };
+        // Create the accident first
+        const accident = await accidentService.createAccident({
+          description: value.description,
+          latitude: value.latitude,
+          longitude: value.longitude,
+          locationAddress: value.locationAddress,
+          accidentDate: value.accidentDate,
+          numberOfVehicles: value.numberOfVehicles,
+          numberOfInjuries: value.numberOfInjuries,
+          numberOfFatalities: value.numberOfFatalities,
+          weatherConditions: value.weatherConditions,
+          roadConditions: value.roadConditions,
+        });
 
-        const accident = await accidentService.reportAccident(reportData);
+        // TODO: Upload images using uploadService
+        // await uploadService.uploadFiles(imageFiles, accident.id);
+
         toast.success(
           "Accident reported successfully! AI analysis in progress...",
         );
@@ -125,7 +141,7 @@ export default function AccidentReportPage() {
             `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
           );
           const data = await response.json();
-          form.setFieldValue("address", data.display_name);
+          form.setFieldValue("locationAddress", data.display_name);
           toast.success("Location detected successfully");
         } catch (error) {
           toast.error("Failed to get address from coordinates");
@@ -174,7 +190,7 @@ export default function AccidentReportPage() {
           >
             {(field) => (
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
+                <label className="flex text-sm font-medium text-gray-700 mb-2 items-center gap-2">
                   <FileText size={18} />
                   Accident Description
                 </label>
@@ -216,7 +232,7 @@ export default function AccidentReportPage() {
 
             {/* Address */}
             <form.Field
-              name="address"
+              name="locationAddress"
               validators={{
                 onChange: ({ value }) =>
                   !value ? "Address is required" : undefined,
@@ -288,35 +304,9 @@ export default function AccidentReportPage() {
             </div>
           </div>
 
-          {/* Vehicle Selection */}
-          <form.Field name="vehicleId">
-            {(field) => (
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
-                  <Car size={18} />
-                  Vehicle (Optional)
-                </label>
-                <select
-                  value={field.state.value}
-                  onBlur={field.handleBlur}
-                  onChange={(e) => field.handleChange(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                >
-                  <option value="">Select a vehicle</option>
-                  {vehicles.map((vehicle) => (
-                    <option key={vehicle.id} value={vehicle.id}>
-                      {vehicle.year} {vehicle.make} {vehicle.model} -{" "}
-                      {vehicle.licensePlate}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
-          </form.Field>
-
           {/* Image Upload */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
+            <label className="flex text-sm font-medium text-gray-700 mb-2 items-center gap-2">
               <Camera size={18} />
               Accident Images (Required)
             </label>
