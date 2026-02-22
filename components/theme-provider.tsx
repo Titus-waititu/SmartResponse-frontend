@@ -12,9 +12,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const { theme } = useThemeStore();
 
   useEffect(() => {
-    // Apply theme on mount
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
+    // Sync theme with DOM (in case it changed via store)
+    const root = document.documentElement;
+    const currentTheme = root.classList.contains("dark") ? "dark" : "light";
+
+    if (currentTheme !== theme) {
+      root.classList.remove("light", "dark");
+      root.classList.add(theme);
+    }
   }, [theme]);
 
   return <>{children}</>;
