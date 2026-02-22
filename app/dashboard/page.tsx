@@ -51,10 +51,12 @@ export default function DashboardPage() {
 
       console.log("📡 Fetching accidents...");
       const response = await accidentService.getAccidents({ limit: 5 });
-      console.log("✅ Accidents loaded:", response.data.length);
-      setRecentAccidents(response.data);
+      const accidents = response?.data || [];
+      console.log("✅ Accidents loaded:", accidents.length);
+      setRecentAccidents(accidents);
     } catch (error) {
       console.error("❌ Failed to load dashboard data", error);
+      setRecentAccidents([]);
       // Don't throw - let the page load with empty data
     } finally {
       setIsLoading(false);
