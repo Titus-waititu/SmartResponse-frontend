@@ -60,7 +60,11 @@ apiClient.interceptors.response.use(
           { refreshToken },
         );
 
-        const { accessToken, refreshToken: newRefreshToken } = response.data;
+        // Handle nested tokens structure
+        const tokens = response.data.tokens || response.data;
+        const accessToken = tokens.accessToken;
+        const newRefreshToken = tokens.refreshToken;
+        
         console.log("✅ Token refreshed successfully");
 
         // Store new tokens
@@ -77,10 +81,10 @@ apiClient.interceptors.response.use(
         return apiClient(originalRequest);
       } catch (refreshError) {
         console.error("❌ Token refresh failed:", refreshError);
-        
+
         // Only logout if we're not on auth pages
         const isAuthPage = window.location.pathname.startsWith("/auth");
-        
+
         if (!isAuthPage) {
           console.log("🚪 Logging out user due to failed token refresh");
           // Clear tokens and redirect to login

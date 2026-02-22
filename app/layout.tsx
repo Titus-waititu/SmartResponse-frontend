@@ -30,13 +30,28 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              try {
-                const stored = localStorage.getItem('theme-storage');
-                const theme = stored ? JSON.parse(stored).state.theme : 'light';
-                document.documentElement.classList.add(theme);
-              } catch (e) {
-                document.documentElement.classList.add('light');
-              }
+              (function() {
+                try {
+                  // Try direct theme first
+                  let theme = localStorage.getItem('theme');
+                  
+                  // Fallback to theme-storage if direct theme not found
+                  if (!theme) {
+                    const stored = localStorage.getItem('theme-storage');
+                    if (stored) {
+                      const parsed = JSON.parse(stored);
+                      theme = parsed.state?.theme || 'light';
+                    }
+                  }
+                  
+                  // Apply theme or default to light
+                  const finalTheme = theme || 'light';
+                  document.documentElement.classList.remove('light', 'dark');
+                  document.documentElement.classList.add(finalTheme);
+                } catch (e) {
+                  document.documentElement.classList.add('light');
+                }
+              })();
             `,
           }}
         />

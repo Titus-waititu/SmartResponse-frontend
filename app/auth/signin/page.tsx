@@ -33,34 +33,48 @@ export default function SignInPage() {
         console.log("🔐 Attempting sign in...");
         const response = await authService.signIn(value);
         console.log("📦 Raw API response:", response);
-        console.log("✅ Sign in successful, setting auth state...", {
-          hasUser: !!response.user,
-          hasAccessToken: !!response.accessToken,
-          hasRefreshToken: !!response.refreshToken,
-          responseKeys: Object.keys(response),
-        });
         
-        // Handle different response formats
-        const user = response.user;
-        const accessToken = response.accessToken;
-        const refreshToken = response.refreshToken;
-        
-        if (!user || !accessToken || !refreshToken) {
-          console.error("❌ Invalid response structure:", { user, accessToken, refreshToken });
-          throw new Error("Invalid response from server");
+        // Check if response indicates failure
+        if ('success' in response && response.success === false) {
+          throw new Error(response.message || "Sign in failed");
         }
         
-        setAuth(user, accessToken, refreshToken);
+        // Extract tokens from nested structure
+        const user = response.user;
+        const accessToken = response.tokens?.accessToken;
+        const refreshToken = response.tokens?.refreshToken;
         
+        console.log("✅ Sign in successful, setting auth state...", {
+          hasUser: !!user,
+          hasAccessToken: !!accessToken,
+          hasRefreshToken: !!refreshToken,
+          sessionId: response.sessionId,
+        });
+
+        if (!user || !accessToken || !refreshToken) {
+          console.error("❌ Invalid response structure:", {
+            user,
+            accessToken,
+            refreshToken,
+            fullResponse: response,
+          });
+          throw new Error("Invalid response from server");
+        }
+
+        setAuth(user, accessToken, refreshToken);
+
         // Verify tokens were stored
         const storedToken = localStorage.getItem("accessToken");
-        console.log("🔍 Token verification after setAuth:", storedToken ? "Stored" : "NOT STORED");
-        
+        console.log(
+          "🔍 Token verification after setAuth:",
+          storedToken ? "Stored" : "NOT STORED",
+        );
+
         toast.success("Successfully signed in!");
-        
+
         // Small delay to ensure tokens are persisted before navigation
-        await new Promise(resolve => setTimeout(resolve, 100));
-        
+        await new Promise((resolve) => setTimeout(resolve, 100));
+
         console.log("🚀 Navigating to dashboard...");
         router.push("/dashboard");
       } catch (error: any) {
@@ -70,7 +84,9 @@ export default function SignInPage() {
           response: error.response?.data,
           status: error.response?.status,
         });
-        toast.error(error.response?.data?.message || error.message || "Failed to sign in");
+        toast.error(
+          error.response?.data?.message || error.message || "Failed to sign in",
+        );
       } finally {
         setIsLoading(false);
       }

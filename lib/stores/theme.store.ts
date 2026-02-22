@@ -4,7 +4,7 @@
  */
 
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 export type Theme = "light" | "dark";
 
@@ -14,34 +14,36 @@ interface ThemeState {
   toggleTheme: () => void;
 }
 
+const applyThemeToDOM = (theme: Theme) => {
+  if (typeof document !== "undefined") {
+    const root = document.documentElement;
+    root.classList.remove("light", "dark");
+    root.classList.add(theme);
+    // Store in localStorage directly for SSR script
+    localStorage.setItem("theme", theme);
+  }
+};
+
 export const useThemeStore = create<ThemeState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       theme: "light",
 
       setTheme: (theme) => {
         set({ theme });
-        // Apply theme to document
-        if (typeof document !== "undefined") {
-          document.documentElement.classList.remove("light", "dark");
-          document.documentElement.classList.add(theme);
-        }
+        applyThemeToDOM(theme);
       },
 
       toggleTheme: () => {
-        set((state) => {
-          const newTheme = state.theme === "light" ? "dark" : "light";
-          // Apply theme to document
-          if (typeof document !== "undefined") {
-            document.documentElement.classList.remove("light", "dark");
-            document.documentElement.classList.add(newTheme);
-          }
-          return { theme: newTheme };
-        });
+        const currentTheme = get().theme;
+        const newTheme = currentTheme === "light" ? "dark" : "light";
+        set({ theme: newTheme });
+        applyThemeToDOM(newTheme);
       },
     }),
     {
       name: "theme-storage",
+      storage: createJSONStorage(() => localStorage),
     },
   ),
 );

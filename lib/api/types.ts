@@ -23,9 +23,14 @@ export interface User {
 }
 
 export interface AuthResponse {
-  accessToken: string;
-  refreshToken: string;
+  success: boolean;
+  message: string;
   user: User;
+  tokens: {
+    accessToken: string;
+    refreshToken: string;
+  };
+  sessionId?: string;
 }
 
 export interface SignUpRequest {

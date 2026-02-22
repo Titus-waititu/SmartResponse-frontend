@@ -50,12 +50,24 @@ export default function SignUpPage() {
       try {
         const { confirmPassword, ...signUpData } = value;
         const response = await authService.signUp(signUpData);
-        setAuth(response.user, response.accessToken, response.refreshToken);
-        toast.success("Account created successfully!");
-        router.push("/dashboard");
+        
+        // Extract tokens from nested structure
+        const accessToken = response.tokens?.accessToken;
+        const refreshToken = response.tokens?.refreshToken;
+        
+        if (response.user && accessToken && refreshToken) {
+          setAuth(response.user, accessToken, refreshToken);
+          toast.success("Account created successfully!");
+          
+          // Small delay to ensure tokens are persisted
+          await new Promise((resolve) => setTimeout(resolve, 100));
+          router.push("/dashboard");
+        } else {
+          throw new Error("Invalid response from server");
+        }
       } catch (error: any) {
         toast.error(
-          error.response?.data?.message || "Failed to create account",
+          error.response?.data?.message || error.message || "Failed to create account",
         );
       } finally {
         setIsLoading(false);

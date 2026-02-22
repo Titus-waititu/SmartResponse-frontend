@@ -28,15 +28,18 @@ export const useAuthStore = create<AuthState>()(
       isAuthenticated: false,
 
       setAuth: (user, accessToken, refreshToken) => {
-        console.log("🔐 Setting auth state", { user: user.email, hasToken: !!accessToken });
-        
+        console.log("🔐 Setting auth state", {
+          user: user.email,
+          hasToken: !!accessToken,
+        });
+
         set({
           user,
           accessToken,
           refreshToken,
           isAuthenticated: true,
         });
-        
+
         // Sync to localStorage for API client (after state update)
         if (typeof window !== "undefined") {
           localStorage.setItem("accessToken", accessToken);
@@ -48,7 +51,7 @@ export const useAuthStore = create<AuthState>()(
       clearAuth: () => {
         console.log("🚪 Clearing auth state");
         console.trace(); // Log the call stack to see where clearAuth is being called from
-        
+
         // Clear localStorage
         if (typeof window !== "undefined") {
           localStorage.removeItem("accessToken");

@@ -30,12 +30,12 @@ export default function DashboardPage() {
     console.log("📊 Dashboard mounted");
     const token = localStorage.getItem("accessToken");
     console.log("🔑 Token on mount:", token ? "Present" : "Missing");
-    
+
     // Small delay to ensure auth tokens are properly set
     const timer = setTimeout(() => {
       loadDashboardData();
     }, 100);
-    
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -48,7 +48,7 @@ export default function DashboardPage() {
         setIsLoading(false);
         return;
       }
-      
+
       console.log("📡 Fetching accidents...");
       const response = await accidentService.getAccidents({ limit: 5 });
       console.log("✅ Accidents loaded:", response.data.length);
@@ -139,9 +139,9 @@ export default function DashboardPage() {
 
   return (
     <DashboardLayout>
-      <div className="space-y-8">
+      <div className="space-y-6 md:space-y-8">
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {stats.map((stat, index) => (
             <Card
               key={index}
@@ -167,7 +167,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {quickActions.map((action, index) => (
             <Card
               key={index}
@@ -200,7 +200,7 @@ export default function DashboardPage() {
 
         {/* Recent Accidents */}
         <Card>
-          <CardBody className="p-6">
+          <CardBody className="p-4 md:p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                 Recent Accidents
