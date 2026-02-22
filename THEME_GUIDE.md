@@ -26,6 +26,7 @@ const { theme, toggleTheme, setTheme } = useThemeStore();
 ```
 
 Methods:
+
 - `theme`: Current theme ("light" | "dark")
 - `toggleTheme()`: Switch between light and dark
 - `setTheme(theme)`: Set specific theme
@@ -35,9 +36,7 @@ Methods:
 Wraps the app to apply theme on mount and handle hydration:
 
 ```tsx
-<ThemeProvider>
-  {children}
-</ThemeProvider>
+<ThemeProvider>{children}</ThemeProvider>
 ```
 
 ### 3. CSS Variables (`app/globals.css`)
@@ -45,6 +44,7 @@ Wraps the app to apply theme on mount and handle hydration:
 All colors defined as CSS custom properties with light/dark variants:
 
 #### Light Theme Variables
+
 - `--background`: #ffffff
 - `--foreground`: #171717
 - `--primary`: #dc2626 (red for emergency)
@@ -53,6 +53,7 @@ All colors defined as CSS custom properties with light/dark variants:
 - `--danger`: #ef4444
 
 #### Dark Theme Variables
+
 - `--background`: #0f172a
 - `--foreground`: #f1f5f9
 - `--primary`: #ef4444
@@ -67,7 +68,7 @@ import { Button } from "@/components/ui";
 
 <Button variant="primary" size="md" isLoading={false}>
   Click me
-</Button>
+</Button>;
 ```
 
 **Variants**: `primary`, `secondary`, `outline`, `ghost`, `danger`
@@ -82,7 +83,7 @@ import { Card, CardHeader, CardBody, CardFooter } from "@/components/ui";
   <CardHeader>Header</CardHeader>
   <CardBody>Content</CardBody>
   <CardFooter>Footer</CardFooter>
-</Card>
+</Card>;
 ```
 
 ### Input Component
@@ -90,11 +91,7 @@ import { Card, CardHeader, CardBody, CardFooter } from "@/components/ui";
 ```tsx
 import { Input } from "@/components/ui";
 
-<Input 
-  label="Email" 
-  error="Error message"
-  icon={<Mail size={20} />}
-/>
+<Input label="Email" error="Error message" icon={<Mail size={20} />} />;
 ```
 
 ### Badge Component
@@ -102,7 +99,7 @@ import { Input } from "@/components/ui";
 ```tsx
 import { Badge } from "@/components/ui";
 
-<Badge variant="success">Active</Badge>
+<Badge variant="success">Active</Badge>;
 ```
 
 **Variants**: `default`, `success`, `warning`, `danger`, `info`
@@ -117,9 +114,7 @@ import { Moon, Sun } from "lucide-react";
 
 const { theme, toggleTheme } = useThemeStore();
 
-<button onClick={toggleTheme}>
-  {theme === "light" ? <Moon /> : <Sun />}
-</button>
+<button onClick={toggleTheme}>{theme === "light" ? <Moon /> : <Sun />}</button>;
 ```
 
 ### In Auth Pages
@@ -138,6 +133,7 @@ Theme toggle is positioned fixed in top-right corner:
 ## Updated Pages
 
 ### ✅ Authentication Pages
+
 - **Sign In** ([/app/auth/signin/page.tsx](app/auth/signin/page.tsx))
   - Modern gradient background
   - Theme toggle button
@@ -150,6 +146,7 @@ Theme toggle is positioned fixed in top-right corner:
   - Compact spacing for better UX
 
 ### ✅ Dashboard
+
 - **Main Dashboard** ([/app/dashboard/page.tsx](app/dashboard/page.tsx))
   - Stat cards with hover effects
   - Quick action cards with gradients
@@ -185,30 +182,33 @@ Theme toggle is positioned fixed in top-right corner:
 ### Transition Effects
 
 ```tsx
-<div className="transition-colors duration-300">
-  Smooth color transitions
-</div>
+<div className="transition-colors duration-300">Smooth color transitions</div>
 ```
 
 ## Color Palette
 
 ### Primary (Emergency)
+
 - Light: Red-600 (#dc2626)
 - Dark: Red-500 (#ef4444)
 
 ### Background
+
 - Light: White (#ffffff)
 - Dark: Gray-900 (#0f172a)
 
 ### Surface
+
 - Light: Gray-50 (#f9fafb)
 - Dark: Gray-800 (#1e293b)
 
 ### Text
+
 - Light: Gray-900 (#111827)
 - Dark: Gray-100 (#f1f5f9)
 
 ### Borders
+
 - Light: Gray-200 (#e5e7eb)
 - Dark: Gray-700 (#334155)
 
@@ -261,6 +261,7 @@ Always test your UI in both light and dark modes to ensure proper contrast and r
 ## Future Enhancements
 
 Potential additions:
+
 - System theme detection
 - Auto theme switching based on time
 - Custom theme colors
@@ -270,12 +271,15 @@ Potential additions:
 ## Troubleshooting
 
 ### Theme Not Persisting
+
 Check if localStorage is enabled in browser
 
 ### Colors Not Updating
+
 Clear browser cache and reload
 
 ### Flash of Wrong Theme
+
 Ensure ThemeProvider is in root layout
 
 ## Dependencies
@@ -291,6 +295,7 @@ Ensure ThemeProvider is in root layout
 ## Summary
 
 The SmartResponse app now has a complete theme system with:
+
 - 🎨 Beautiful light and dark modes
 - 🔄 Smooth transitions
 - 💾 Persistent preferences

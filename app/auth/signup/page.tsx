@@ -13,7 +13,16 @@ import { authService } from "@/lib/api";
 import { useAuthStore } from "@/lib/stores/auth.store";
 import { useThemeStore } from "@/lib/stores/theme.store";
 import toast from "react-hot-toast";
-import { AlertCircle, Mail, Lock, User, Phone, Chrome, Moon, Sun } from "lucide-react";
+import {
+  AlertCircle,
+  Mail,
+  Lock,
+  User,
+  Phone,
+  Chrome,
+  Moon,
+  Sun,
+} from "lucide-react";
 import { Button } from "@/components/ui";
 
 export default function SignUpPage() {
@@ -45,7 +54,9 @@ export default function SignUpPage() {
         toast.success("Account created successfully!");
         router.push("/dashboard");
       } catch (error: any) {
-        toast.error(error.response?.data?.message || "Failed to create account");
+        toast.error(
+          error.response?.data?.message || "Failed to create account",
+        );
       } finally {
         setIsLoading(false);
       }
@@ -73,7 +84,10 @@ export default function SignUpPage() {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
             <div className="p-4 bg-red-100 dark:bg-red-900/30 rounded-2xl">
-              <AlertCircle size={48} className="text-red-600 dark:text-red-500" />
+              <AlertCircle
+                size={48}
+                className="text-red-600 dark:text-red-500"
+              />
             </div>
           </div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-500 dark:to-orange-500 bg-clip-text text-transparent">
@@ -100,7 +114,8 @@ export default function SignUpPage() {
             <form.Field
               name="fullName"
               validators={{
-                onChange: ({ value }) => !value ? "Full name is required" : undefined,
+                onChange: ({ value }) =>
+                  !value ? "Full name is required" : undefined,
               }}
             >
               {(field) => (
@@ -109,7 +124,10 @@ export default function SignUpPage() {
                     Full Name
                   </label>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" size={20} />
+                    <User
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500"
+                      size={20}
+                    />
                     <input
                       type="text"
                       value={field.state.value}
@@ -120,7 +138,9 @@ export default function SignUpPage() {
                     />
                   </div>
                   {field.state.meta.errors && (
-                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{field.state.meta.errors.join(", ")}</p>
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                      {field.state.meta.errors.join(", ")}
+                    </p>
                   )}
                 </div>
               )}
@@ -129,7 +149,8 @@ export default function SignUpPage() {
             <form.Field
               name="username"
               validators={{
-                onChange: ({ value }) => !value ? "Username is required" : undefined,
+                onChange: ({ value }) =>
+                  !value ? "Username is required" : undefined,
               }}
             >
               {(field) => (
@@ -138,7 +159,10 @@ export default function SignUpPage() {
                     Username
                   </label>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" size={20} />
+                    <User
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500"
+                      size={20}
+                    />
                     <input
                       type="text"
                       value={field.state.value}
@@ -149,7 +173,9 @@ export default function SignUpPage() {
                     />
                   </div>
                   {field.state.meta.errors && (
-                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{field.state.meta.errors.join(", ")}</p>
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                      {field.state.meta.errors.join(", ")}
+                    </p>
                   )}
                 </div>
               )}
@@ -160,7 +186,8 @@ export default function SignUpPage() {
               validators={{
                 onChange: ({ value }) => {
                   if (!value) return "Email is required";
-                  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return "Invalid email address";
+                  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+                    return "Invalid email address";
                   return undefined;
                 },
               }}
@@ -171,7 +198,10 @@ export default function SignUpPage() {
                     Email Address
                   </label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" size={20} />
+                    <Mail
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500"
+                      size={20}
+                    />
                     <input
                       type="email"
                       value={field.state.value}
@@ -182,7 +212,9 @@ export default function SignUpPage() {
                     />
                   </div>
                   {field.state.meta.errors && (
-                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{field.state.meta.errors.join(", ")}</p>
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                      {field.state.meta.errors.join(", ")}
+                    </p>
                   )}
                 </div>
               )}
@@ -195,7 +227,10 @@ export default function SignUpPage() {
                     Phone Number (Optional)
                   </label>
                   <div className="relative">
-                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" size={20} />
+                    <Phone
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500"
+                      size={20}
+                    />
                     <input
                       type="tel"
                       value={field.state.value}
@@ -214,7 +249,8 @@ export default function SignUpPage() {
               validators={{
                 onChange: ({ value }) => {
                   if (!value) return "Password is required";
-                  if (value.length < 6) return "Password must be at least 6 characters";
+                  if (value.length < 6)
+                    return "Password must be at least 6 characters";
                   return undefined;
                 },
               }}
@@ -225,7 +261,10 @@ export default function SignUpPage() {
                     Password
                   </label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" size={20} />
+                    <Lock
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500"
+                      size={20}
+                    />
                     <input
                       type="password"
                       value={field.state.value}
@@ -236,7 +275,9 @@ export default function SignUpPage() {
                     />
                   </div>
                   {field.state.meta.errors && (
-                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{field.state.meta.errors.join(", ")}</p>
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                      {field.state.meta.errors.join(", ")}
+                    </p>
                   )}
                 </div>
               )}
@@ -245,7 +286,8 @@ export default function SignUpPage() {
             <form.Field
               name="confirmPassword"
               validators={{
-                onChange: ({ value }) => !value ? "Please confirm your password" : undefined,
+                onChange: ({ value }) =>
+                  !value ? "Please confirm your password" : undefined,
               }}
             >
               {(field) => (
@@ -254,7 +296,10 @@ export default function SignUpPage() {
                     Confirm Password
                   </label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" size={20} />
+                    <Lock
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500"
+                      size={20}
+                    />
                     <input
                       type="password"
                       value={field.state.value}
@@ -265,13 +310,21 @@ export default function SignUpPage() {
                     />
                   </div>
                   {field.state.meta.errors && (
-                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{field.state.meta.errors.join(", ")}</p>
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                      {field.state.meta.errors.join(", ")}
+                    </p>
                   )}
                 </div>
               )}
             </form.Field>
 
-            <Button type="submit" variant="primary" size="lg" isLoading={isLoading} className="w-full mt-6">
+            <Button
+              type="submit"
+              variant="primary"
+              size="lg"
+              isLoading={isLoading}
+              className="w-full mt-6"
+            >
               {isLoading ? "Creating account..." : "Create Account"}
             </Button>
           </form>
@@ -293,12 +346,17 @@ export default function SignUpPage() {
             className="w-full flex items-center justify-center space-x-2 border border-gray-300 dark:border-gray-600 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
           >
             <Chrome size={20} className="text-gray-700 dark:text-gray-300" />
-            <span className="font-medium text-gray-700 dark:text-gray-300">Sign up with Google</span>
+            <span className="font-medium text-gray-700 dark:text-gray-300">
+              Sign up with Google
+            </span>
           </button>
 
           <p className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
             Already have an account?{" "}
-            <Link href="/auth/signin" className="text-red-600 dark:text-red-400 font-medium hover:text-red-700 dark:hover:text-red-300 transition-colors">
+            <Link
+              href="/auth/signin"
+              className="text-red-600 dark:text-red-400 font-medium hover:text-red-700 dark:hover:text-red-300 transition-colors"
+            >
               Sign In
             </Link>
           </p>
