@@ -8,22 +8,22 @@
   --foreground: #171717;
   --surface: #f9fafb;
   --surface-elevated: #ffffff;
-  
+
   /* Primary Colors (Red for Emergency) */
   --primary: #dc2626;
   --primary-hover: #b91c1c;
   --primary-light: #fee2e2;
   --primary-dark: #991b1b;
-  
+
   /* Secondary Colors */
   --secondary: #64748b;
   --secondary-hover: #475569;
   --secondary-light: #f1f5f9;
-  
+
   /* Accent Colors */
   --accent: #3b82f6;
   --accent-hover: #2563eb;
-  
+
   /* Status Colors */
   --success: #10b981;
   --success-light: #d1fae5;
@@ -33,17 +33,17 @@
   --danger-light: #fee2e2;
   --info: #3b82f6;
   --info-light: #dbeafe;
-  
+
   /* Text Colors */
   --text-primary: #111827;
   --text-secondary: #6b7280;
   --text-tertiary: #9ca3af;
   --text-inverse: #ffffff;
-  
+
   /* Border Colors */
   --border: #e5e7eb;
   --border-hover: #d1d5db;
-  
+
   /* Shadow */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
@@ -58,22 +58,22 @@
   --foreground: #f1f5f9;
   --surface: #1e293b;
   --surface-elevated: #334155;
-  
+
   /* Primary Colors */
   --primary: #ef4444;
   --primary-hover: #dc2626;
   --primary-light: #7f1d1d;
   --primary-dark: #991b1b;
-  
+
   /* Secondary Colors */
   --secondary: #94a3b8;
   --secondary-hover: #cbd5e1;
   --secondary-light: #334155;
-  
+
   /* Accent Colors */
   --accent: #60a5fa;
   --accent-hover: #3b82f6;
-  
+
   /* Status Colors */
   --success: #34d399;
   --success-light: #064e3b;
@@ -83,17 +83,17 @@
   --danger-light: #7f1d1d;
   --info: #60a5fa;
   --info-light: #1e3a8a;
-  
+
   /* Text Colors */
   --text-primary: #f1f5f9;
   --text-secondary: #cbd5e1;
   --text-tertiary: #94a3b8;
   --text-inverse: #0f172a;
-  
+
   /* Border Colors */
   --border: #334155;
   --border-hover: #475569;
-  
+
   /* Shadow */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5);
@@ -116,7 +116,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* Scrollbar Styling */

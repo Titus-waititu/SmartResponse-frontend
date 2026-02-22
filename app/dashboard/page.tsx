@@ -9,7 +9,15 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { DashboardLayout } from "@/components/layouts/dashboard-layout";
 import { accidentService, type Accident, AccidentSeverity } from "@/lib/api";
-import { AlertCircle, Ambulance, TrendingUp, Clock, Car, ArrowRight, Activity } from "lucide-react";
+import {
+  AlertCircle,
+  Ambulance,
+  TrendingUp,
+  Clock,
+  Car,
+  ArrowRight,
+  Activity,
+} from "lucide-react";
 import { format } from "date-fns";
 import { Card, CardBody, Badge } from "@/components/ui";
 
@@ -33,7 +41,9 @@ export default function DashboardPage() {
     }
   };
 
-  const getSeverityVariant = (severity: AccidentSeverity): "default" | "success" | "warning" | "danger" | "info" => {
+  const getSeverityVariant = (
+    severity: AccidentSeverity,
+  ): "default" | "success" | "warning" | "danger" | "info" => {
     switch (severity) {
       case "critical":
         return "danger";
@@ -126,7 +136,9 @@ export default function DashboardPage() {
                     {stat.value}
                   </p>
                 </div>
-                <div className={`p-3 rounded-xl ${stat.iconBg} group-hover:scale-110 transition-transform`}>
+                <div
+                  className={`p-3 rounded-xl ${stat.iconBg} group-hover:scale-110 transition-transform`}
+                >
                   <stat.icon size={28} className={stat.iconColor} />
                 </div>
               </CardBody>
@@ -144,7 +156,10 @@ export default function DashboardPage() {
             >
               <div className={`h-2 bg-gradient-to-r ${action.gradient}`}></div>
               <CardBody className="p-6">
-                <action.icon size={32} className={`text-gray-700 dark:text-gray-300 mb-3 group-hover:scale-110 transition-transform`} />
+                <action.icon
+                  size={32}
+                  className={`text-gray-700 dark:text-gray-300 mb-3 group-hover:scale-110 transition-transform`}
+                />
                 <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                   {action.title}
                 </h3>
@@ -153,7 +168,10 @@ export default function DashboardPage() {
                 </p>
                 <div className="flex items-center text-red-600 dark:text-red-400 font-medium">
                   <span className="text-sm">Get Started</span>
-                  <ArrowRight size={16} className="ml-2 group-hover:translate-x-2 transition-transform" />
+                  <ArrowRight
+                    size={16}
+                    className="ml-2 group-hover:translate-x-2 transition-transform"
+                  />
                 </div>
               </CardBody>
             </Card>
@@ -181,14 +199,21 @@ export default function DashboardPage() {
             {isLoading ? (
               <div className="flex items-center justify-center py-12">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-600 dark:border-red-500"></div>
-                <span className="ml-3 text-gray-600 dark:text-gray-400">Loading...</span>
+                <span className="ml-3 text-gray-600 dark:text-gray-400">
+                  Loading...
+                </span>
               </div>
             ) : recentAccidents.length === 0 ? (
               <div className="text-center py-12">
                 <div className="p-4 bg-gray-100 dark:bg-gray-700 rounded-full w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-                  <AlertCircle size={40} className="text-gray-400 dark:text-gray-500" />
+                  <AlertCircle
+                    size={40}
+                    className="text-gray-400 dark:text-gray-500"
+                  />
                 </div>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">No accidents reported yet</p>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  No accidents reported yet
+                </p>
                 <button
                   onClick={() => router.push("/accidents/report")}
                   className="px-6 py-3 bg-red-600 dark:bg-red-500 text-white rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition-colors font-medium"
@@ -205,8 +230,13 @@ export default function DashboardPage() {
                     className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-red-400 dark:hover:border-red-500 hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer transition-all group"
                   >
                     <div className="flex items-center gap-4 flex-1 min-w-0">
-                      <div className={`p-3 rounded-lg bg-${getSeverityVariant(accident.severity)}-100 dark:bg-${getSeverityVariant(accident.severity)}-900/30 flex-shrink-0`}>
-                        <AlertCircle size={24} className={`text-${getSeverityVariant(accident.severity)}-600 dark:text-${getSeverityVariant(accident.severity)}-400`} />
+                      <div
+                        className={`p-3 rounded-lg bg-${getSeverityVariant(accident.severity)}-100 dark:bg-${getSeverityVariant(accident.severity)}-900/30 flex-shrink-0`}
+                      >
+                        <AlertCircle
+                          size={24}
+                          className={`text-${getSeverityVariant(accident.severity)}-600 dark:text-${getSeverityVariant(accident.severity)}-400`}
+                        />
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-gray-900 dark:text-gray-100 truncate">

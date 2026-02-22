@@ -67,8 +67,13 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200 dark:border-gray-700">
           {isSidebarOpen && (
             <div className="flex items-center space-x-2">
-              <AlertCircle className="text-red-600 dark:text-red-500" size={28} />
-              <h1 className="text-xl font-bold text-red-600 dark:text-red-500">SmartResponse</h1>
+              <AlertCircle
+                className="text-red-600 dark:text-red-500"
+                size={28}
+              />
+              <h1 className="text-xl font-bold text-red-600 dark:text-red-500">
+                SmartResponse
+              </h1>
             </div>
           )}
           <button
@@ -108,7 +113,9 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           >
             {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
             {isSidebarOpen && (
-              <span className="text-sm">{theme === "light" ? "Dark" : "Light"} Mode</span>
+              <span className="text-sm">
+                {theme === "light" ? "Dark" : "Light"} Mode
+              </span>
             )}
           </button>
 
@@ -122,7 +129,9 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                 <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
                   {user?.fullName}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{user?.email}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                  {user?.email}
+                </p>
               </div>
             )}
           </div>
@@ -149,11 +158,11 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
               Welcome back, {user?.fullName?.split(" ")[0]}!
             </h2>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
-              {new Date().toLocaleDateString("en-US", { 
-                weekday: "long", 
-                year: "numeric", 
-                month: "long", 
-                day: "numeric" 
+              {new Date().toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
               })}
             </p>
           </div>

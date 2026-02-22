@@ -65,7 +65,10 @@ export default function SignInPage() {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
             <div className="p-4 bg-red-100 dark:bg-red-900/30 rounded-2xl">
-              <AlertCircle size={48} className="text-red-600 dark:text-red-500" />
+              <AlertCircle
+                size={48}
+                className="text-red-600 dark:text-red-500"
+              />
             </div>
           </div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-500 dark:to-orange-500 bg-clip-text text-transparent">

@@ -38,7 +38,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               "transition-colors",
               icon && "pl-10",
               error && "border-red-500 dark:border-red-400",
-              className
+              className,
             )}
             {...props}
           />
@@ -48,7 +48,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";
