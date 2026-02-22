@@ -30,12 +30,47 @@ export default function SignInPage() {
     onSubmit: async ({ value }) => {
       setIsLoading(true);
       try {
+        console.log("🔐 Attempting sign in...");
         const response = await authService.signIn(value);
-        setAuth(response.user, response.accessToken, response.refreshToken);
+        console.log("📦 Raw API response:", response);
+        console.log("✅ Sign in successful, setting auth state...", {
+          hasUser: !!response.user,
+          hasAccessToken: !!response.accessToken,
+          hasRefreshToken: !!response.refreshToken,
+          responseKeys: Object.keys(response),
+        });
+        
+        // Handle different response formats
+        const user = response.user;
+        const accessToken = response.accessToken;
+        const refreshToken = response.refreshToken;
+        
+        if (!user || !accessToken || !refreshToken) {
+          console.error("❌ Invalid response structure:", { user, accessToken, refreshToken });
+          throw new Error("Invalid response from server");
+        }
+        
+        setAuth(user, accessToken, refreshToken);
+        
+        // Verify tokens were stored
+        const storedToken = localStorage.getItem("accessToken");
+        console.log("🔍 Token verification after setAuth:", storedToken ? "Stored" : "NOT STORED");
+        
         toast.success("Successfully signed in!");
+        
+        // Small delay to ensure tokens are persisted before navigation
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        console.log("🚀 Navigating to dashboard...");
         router.push("/dashboard");
       } catch (error: any) {
-        toast.error(error.response?.data?.message || "Failed to sign in");
+        console.error("❌ Sign in failed:", error);
+        console.error("📝 Error details:", {
+          message: error.message,
+          response: error.response?.data,
+          status: error.response?.status,
+        });
+        toast.error(error.response?.data?.message || error.message || "Failed to sign in");
       } finally {
         setIsLoading(false);
       }

@@ -42,15 +42,18 @@ apiClient.interceptors.response.use(
 
     // Handle 401 errors (Unauthorized)
     if (error.response?.status === 401 && !originalRequest._retry) {
+      console.log("⚠️ 401 error detected, attempting token refresh...");
       originalRequest._retry = true;
 
       try {
         const refreshToken = localStorage.getItem("refreshToken");
 
         if (!refreshToken) {
+          console.log("❌ No refresh token available");
           throw new Error("No refresh token available");
         }
 
+        console.log("🔄 Attempting to refresh token...");
         // Attempt to refresh token
         const response = await axios.post(
           `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.AUTH.REFRESH}`,
@@ -58,6 +61,7 @@ apiClient.interceptors.response.use(
         );
 
         const { accessToken, refreshToken: newRefreshToken } = response.data;
+        console.log("✅ Token refreshed successfully");
 
         // Store new tokens
         localStorage.setItem("accessToken", accessToken);
@@ -72,16 +76,25 @@ apiClient.interceptors.response.use(
 
         return apiClient(originalRequest);
       } catch (refreshError) {
-        // Clear tokens and redirect to login
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-        localStorage.removeItem("user");
+        console.error("❌ Token refresh failed:", refreshError);
+        
+        // Only logout if we're not on auth pages
+        const isAuthPage = window.location.pathname.startsWith("/auth");
+        
+        if (!isAuthPage) {
+          console.log("🚪 Logging out user due to failed token refresh");
+          // Clear tokens and redirect to login
+          localStorage.removeItem("accessToken");
+          localStorage.removeItem("refreshToken");
+          localStorage.removeItem("user");
+          localStorage.removeItem("auth-storage");
 
-        toast.error("Session expired. Please login again.");
+          toast.error("Session expired. Please login again.");
 
-        // Redirect to login page
-        if (typeof window !== "undefined") {
-          window.location.href = "/auth/signin";
+          // Redirect to login page
+          if (typeof window !== "undefined") {
+            window.location.href = "/auth/signin";
+          }
         }
 
         return Promise.reject(refreshError);

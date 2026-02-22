@@ -4,7 +4,7 @@
  */
 
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 import type { User } from "@/lib/api";
 
 interface AuthState {
@@ -28,24 +28,33 @@ export const useAuthStore = create<AuthState>()(
       isAuthenticated: false,
 
       setAuth: (user, accessToken, refreshToken) => {
-        // Also store in localStorage for API client
-        localStorage.setItem("accessToken", accessToken);
-        localStorage.setItem("refreshToken", refreshToken);
-        localStorage.setItem("user", JSON.stringify(user));
-
+        console.log("🔐 Setting auth state", { user: user.email, hasToken: !!accessToken });
+        
         set({
           user,
           accessToken,
           refreshToken,
           isAuthenticated: true,
         });
+        
+        // Sync to localStorage for API client (after state update)
+        if (typeof window !== "undefined") {
+          localStorage.setItem("accessToken", accessToken);
+          localStorage.setItem("refreshToken", refreshToken);
+          localStorage.setItem("user", JSON.stringify(user));
+        }
       },
 
       clearAuth: () => {
+        console.log("🚪 Clearing auth state");
+        console.trace(); // Log the call stack to see where clearAuth is being called from
+        
         // Clear localStorage
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-        localStorage.removeItem("user");
+        if (typeof window !== "undefined") {
+          localStorage.removeItem("accessToken");
+          localStorage.removeItem("refreshToken");
+          localStorage.removeItem("user");
+        }
 
         set({
           user: null,
@@ -63,6 +72,7 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: "auth-storage",
+      storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         user: state.user,
         accessToken: state.accessToken,

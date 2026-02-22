@@ -27,15 +27,35 @@ export default function DashboardPage() {
   const router = useRouter();
 
   useEffect(() => {
-    loadDashboardData();
+    console.log("📊 Dashboard mounted");
+    const token = localStorage.getItem("accessToken");
+    console.log("🔑 Token on mount:", token ? "Present" : "Missing");
+    
+    // Small delay to ensure auth tokens are properly set
+    const timer = setTimeout(() => {
+      loadDashboardData();
+    }, 100);
+    
+    return () => clearTimeout(timer);
   }, []);
 
   const loadDashboardData = async () => {
     try {
+      // Verify we have a token before making the request
+      const token = localStorage.getItem("accessToken");
+      if (!token) {
+        console.warn("⚠️ No access token found when loading dashboard data");
+        setIsLoading(false);
+        return;
+      }
+      
+      console.log("📡 Fetching accidents...");
       const response = await accidentService.getAccidents({ limit: 5 });
+      console.log("✅ Accidents loaded:", response.data.length);
       setRecentAccidents(response.data);
     } catch (error) {
-      console.error("Failed to load dashboard data", error);
+      console.error("❌ Failed to load dashboard data", error);
+      // Don't throw - let the page load with empty data
     } finally {
       setIsLoading(false);
     }
