@@ -51,7 +51,7 @@ export const useNotificationStore = create<NotificationState>((set, get) => ({
     try {
       const userId = useAuthStore.getState().user?.id;
       if (!userId) return;
-      
+
       await notificationService.markAllAsRead(userId);
       const { notifications } = get();
       const updated = notifications.map((n) => ({ ...n, isRead: true }));
