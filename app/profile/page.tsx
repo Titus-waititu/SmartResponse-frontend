@@ -9,7 +9,16 @@ import { useState } from "react";
 import { DashboardLayout } from "@/components/layouts/dashboard-layout";
 import { Card, CardBody } from "@/components/ui";
 import { useAuthStore } from "@/lib/stores/auth.store";
-import { User, Mail, Phone, Shield, Calendar, Edit2, Save, X } from "lucide-react";
+import {
+  User,
+  Mail,
+  Phone,
+  Shield,
+  Calendar,
+  Edit2,
+  Save,
+  X,
+} from "lucide-react";
 import { format } from "date-fns";
 
 export default function ProfilePage() {

@@ -14,10 +14,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // On mount, ensure theme is applied
     const root = document.documentElement;
-    
+
     // Check if there's a theme in localStorage that might not be in sync
-    const storedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    
+    const storedTheme = localStorage.getItem("theme") as
+      | "light"
+      | "dark"
+      | null;
+
     if (storedTheme && storedTheme !== theme) {
       setTheme(storedTheme);
     } else {

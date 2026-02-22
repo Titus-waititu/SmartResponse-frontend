@@ -74,7 +74,10 @@ export default function VehiclesPage() {
                   </p>
                 </div>
                 <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-xl">
-                  <Car size={28} className="text-green-600 dark:text-green-400" />
+                  <Car
+                    size={28}
+                    className="text-green-600 dark:text-green-400"
+                  />
                 </div>
               </div>
             </CardBody>

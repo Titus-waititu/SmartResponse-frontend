@@ -33,17 +33,17 @@ export default function SignInPage() {
         console.log("🔐 Attempting sign in...");
         const response = await authService.signIn(value);
         console.log("📦 Raw API response:", response);
-        
+
         // Check if response indicates failure
-        if ('success' in response && response.success === false) {
+        if ("success" in response && response.success === false) {
           throw new Error(response.message || "Sign in failed");
         }
-        
+
         // Extract tokens from nested structure
         const user = response.user;
         const accessToken = response.tokens?.accessToken;
         const refreshToken = response.tokens?.refreshToken;
-        
+
         console.log("✅ Sign in successful, setting auth state...", {
           hasUser: !!user,
           hasAccessToken: !!accessToken,

@@ -21,7 +21,6 @@ export function NotificationPanel({ isOpen, onClose }: NotificationPanelProps) {
     markAsRead,
     markAllAsRead,
     deleteNotification,
-    deleteAll,
   } = useNotificationStore();
 
   // Fetch notifications on mount
@@ -56,13 +55,13 @@ export function NotificationPanel({ isOpen, onClose }: NotificationPanelProps) {
   const getNotificationIcon = (type: Notification["type"]) => {
     const iconClass = "w-4 h-4";
     switch (type) {
-      case "ACCIDENT_ALERT":
+      case "accident_assigned":
         return <div className={`${iconClass} bg-red-500 rounded-full`} />;
-      case "REPORT_UPDATE":
+      case "accident_updated":
         return <div className={`${iconClass} bg-blue-500 rounded-full`} />;
-      case "DISPATCH_ASSIGNED":
+      case "service_dispatched":
         return <div className={`${iconClass} bg-purple-500 rounded-full`} />;
-      case "VEHICLE_ASSIGNED":
+      case "service_completed":
         return <div className={`${iconClass} bg-green-500 rounded-full`} />;
       default:
         return <Bell className={iconClass} />;
@@ -71,13 +70,11 @@ export function NotificationPanel({ isOpen, onClose }: NotificationPanelProps) {
 
   const getPriorityColor = (priority: Notification["priority"]) => {
     switch (priority) {
-      case "CRITICAL":
+      case "high":
         return "text-red-500";
-      case "HIGH":
-        return "text-orange-500";
-      case "MEDIUM":
+      case "medium":
         return "text-yellow-500";
-      case "LOW":
+      case "low":
         return "text-gray-500";
       default:
         return "text-gray-400";
@@ -91,7 +88,8 @@ export function NotificationPanel({ isOpen, onClose }: NotificationPanelProps) {
 
     if (diffInSeconds < 60) return "Just now";
     if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;
-    if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)}h ago`;
+    if (diffInSeconds < 86400)
+      return `${Math.floor(diffInSeconds / 3600)}h ago`;
     if (diffInSeconds < 604800)
       return `${Math.floor(diffInSeconds / 86400)}d ago`;
 
@@ -105,9 +103,9 @@ export function NotificationPanel({ isOpen, onClose }: NotificationPanelProps) {
     if (!notification.isRead) {
       markAsRead(notification.id);
     }
-    // Navigate to the related page if actionUrl exists
-    if (notification.actionUrl) {
-      window.location.href = notification.actionUrl;
+    // Navigate to accident detail if accidentId exists
+    if (notification.accidentId) {
+      window.location.href = `/accidents/${notification.accidentId}`;
     }
   };
 
@@ -145,22 +143,11 @@ export function NotificationPanel({ isOpen, onClose }: NotificationPanelProps) {
             <CheckCheck className="w-3.5 h-3.5" />
             Mark all read
           </button>
-          <button
-            onClick={() => {
-              if (confirm("Delete all notifications?")) {
-                deleteAll();
-              }
-            }}
-            className="text-xs text-text-tertiary hover:text-danger font-medium flex items-center gap-1"
-          >
-            <Trash2 className="w-3.5 h-3.5" />
-            Clear all
-          </button>
         </div>
       )}
 
       {/* Notifications List */}
-      <div className="max-h-[32rem] overflow-y-auto">
+      <div className="max-h-128 overflow-y-auto">
         {isLoading ? (
           <div className="p-8 text-center text-text-secondary">
             <div className="animate-spin w-8 h-8 border-2 border-primary border-t-transparent rounded-full mx-auto" />
@@ -189,7 +176,7 @@ export function NotificationPanel({ isOpen, onClose }: NotificationPanelProps) {
                 onClick={() => handleNotificationClick(notification)}
               >
                 <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
+                  <div className="shrink-0 mt-1">
                     {getNotificationIcon(notification.type)}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -204,7 +191,7 @@ export function NotificationPanel({ isOpen, onClose }: NotificationPanelProps) {
                         {notification.title}
                       </p>
                       {!notification.isRead && (
-                        <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0 mt-1.5" />
+                        <div className="w-2 h-2 bg-primary rounded-full shrink-0 mt-1.5" />
                       )}
                     </div>
                     <p className="text-xs text-text-tertiary mt-1 line-clamp-2">
@@ -212,7 +199,7 @@ export function NotificationPanel({ isOpen, onClose }: NotificationPanelProps) {
                     </p>
                     <div className="flex items-center justify-between mt-2">
                       <span
-                        className={`text-xs ${getPriorityColor(notification.priority)}`}
+                        className={`text-xs uppercase ${getPriorityColor(notification.priority)}`}
                       >
                         {notification.priority}
                       </span>
@@ -224,9 +211,7 @@ export function NotificationPanel({ isOpen, onClose }: NotificationPanelProps) {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      if (
-                        confirm("Delete this notification?")
-                      ) {
+                      if (confirm("Delete this notification?")) {
                         deleteNotification(notification.id);
                       }
                     }}

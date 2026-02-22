@@ -5,9 +5,9 @@
 
 // User Types
 export enum UserRole {
-  ADMIN = 'admin',
-  OFFICER = 'officer',
-  USER = 'user',
+  ADMIN = "admin",
+  OFFICER = "officer",
+  USER = "user",
 }
 
 export interface User {
@@ -57,14 +57,14 @@ export interface ChangePasswordRequest {
 }
 
 // Accident Types
-export type AccidentSeverity = 'minor' | 'moderate' | 'severe' | 'critical';
+export type AccidentSeverity = "minor" | "moderate" | "severe" | "critical";
 
 export type AccidentStatus =
-  | 'pending'
-  | 'in_progress'
-  | 'under_review'
-  | 'completed'
-  | 'closed';
+  | "pending"
+  | "in_progress"
+  | "under_review"
+  | "completed"
+  | "closed";
 
 export interface Accident {
   id: string;
@@ -132,7 +132,7 @@ export interface Location {
 }
 
 // Vehicle Types
-export type VehicleType = 'sedan' | 'suv' | 'truck' | 'motorcycle' | 'other';
+export type VehicleType = "sedan" | "suv" | "truck" | "motorcycle" | "other";
 
 export interface Vehicle {
   id: string;
@@ -170,14 +170,14 @@ export interface VehicleCreateRequest {
 }
 
 // Emergency Service Types
-export type EmergencyServiceType = 'police' | 'ambulance' | 'fire' | 'tow';
+export type EmergencyServiceType = "police" | "ambulance" | "fire" | "tow";
 
 export type EmergencyServiceStatus =
-  | 'dispatched'
-  | 'en_route'
-  | 'arrived'
-  | 'completed'
-  | 'cancelled';
+  | "dispatched"
+  | "en_route"
+  | "arrived"
+  | "completed"
+  | "cancelled";
 
 export interface EmergencyService {
   id: string;
@@ -217,7 +217,7 @@ export interface AssignResponderRequest {
 }
 
 // Media Types
-export type MediaType = 'image' | 'video' | 'document';
+export type MediaType = "image" | "video" | "document";
 
 export interface Media {
   id: string;
@@ -247,13 +247,13 @@ export interface MediaCreateRequest {
 
 // Notification Types
 export type NotificationType =
-  | 'accident_assigned'
-  | 'accident_updated'
-  | 'service_dispatched'
-  | 'service_completed'
-  | 'general';
+  | "accident_assigned"
+  | "accident_updated"
+  | "service_dispatched"
+  | "service_completed"
+  | "general";
 
-export type NotificationPriority = 'low' | 'medium' | 'high';
+export type NotificationPriority = "low" | "medium" | "high";
 
 export interface Notification {
   id: string;
@@ -354,7 +354,7 @@ export interface PaginationParams {
   page?: number;
   limit?: number;
   sortBy?: string;
-  sortOrder?: 'ASC' | 'DESC';
+  sortOrder?: "ASC" | "DESC";
   search?: string;
   role?: UserRole;
   isActive?: boolean;

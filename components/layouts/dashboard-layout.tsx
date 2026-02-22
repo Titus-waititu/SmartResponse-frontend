@@ -113,9 +113,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
               }`}
             >
               <item.icon size={20} className="flex-shrink-0" />
-              {isSidebarOpen && (
-                <span className="truncate">{item.name}</span>
-              )}
+              {isSidebarOpen && <span className="truncate">{item.name}</span>}
             </Link>
           ))}
         </nav>
@@ -175,22 +173,20 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                 className="p-3 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 transition-all shadow-sm hover:shadow-md"
                 title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
               >
-                {theme === "light" ? (
-                  <Moon size={20} />
-                ) : (
-                  <Sun size={20} />
-                )}
+                {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
               </button>
-              
+
               {/* Notifications */}
               <div className="relative">
                 <button
-                  onClick={() => setIsNotificationPanelOpen(!isNotificationPanelOpen)}
+                  onClick={() =>
+                    setIsNotificationPanelOpen(!isNotificationPanelOpen)
+                  }
                   className="relative p-3 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 transition-all shadow-sm hover:shadow-md"
                 >
                   <Bell size={20} />
                   {unreadCount > 0 && (
-                    <span className="absolute top-1.5 right-1.5 min-w-[18px] h-[18px] flex items-center justify-center px-1 bg-red-500 text-white text-[10px] font-bold rounded-full">
+                    <span className="absolute top-1.5 right-1.5 min-w-4.5 h-4.5 flex items-center justify-center px-1 bg-red-500 text-white text-[10px] font-bold rounded-full">
                       {unreadCount > 9 ? "9+" : unreadCount}
                     </span>
                   )}

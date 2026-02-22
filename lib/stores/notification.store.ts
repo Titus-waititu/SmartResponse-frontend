@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { notificationService } from "@/lib/api/services";
+import { useAuthStore } from "@/lib/stores/auth.store";
 import type { Notification } from "@/lib/api/types";
 
 interface NotificationState {
@@ -11,7 +12,6 @@ interface NotificationState {
   markAsRead: (id: string) => Promise<void>;
   markAllAsRead: () => Promise<void>;
   deleteNotification: (id: string) => Promise<void>;
-  deleteAll: () => Promise<void>;
 }
 
 export const useNotificationStore = create<NotificationState>((set, get) => ({
@@ -24,11 +24,9 @@ export const useNotificationStore = create<NotificationState>((set, get) => ({
     set({ isLoading: true, error: null });
     try {
       const response = await notificationService.getNotifications();
-      if (response.success && response.data) {
-        const notifications = response.data;
-        const unreadCount = notifications.filter((n) => !n.isRead).length;
-        set({ notifications, unreadCount, isLoading: false });
-      }
+      const notifications = response.data;
+      const unreadCount = notifications.filter((n) => !n.isRead).length;
+      set({ notifications, unreadCount, isLoading: false });
     } catch (error) {
       set({ error: "Failed to fetch notifications", isLoading: false });
       console.error("Error fetching notifications:", error);
@@ -51,7 +49,10 @@ export const useNotificationStore = create<NotificationState>((set, get) => ({
 
   markAllAsRead: async () => {
     try {
-      await notificationService.markAllAsRead();
+      const userId = useAuthStore.getState().user?.id;
+      if (!userId) return;
+      
+      await notificationService.markAllAsRead(userId);
       const { notifications } = get();
       const updated = notifications.map((n) => ({ ...n, isRead: true }));
       set({ notifications: updated, unreadCount: 0 });
@@ -69,15 +70,6 @@ export const useNotificationStore = create<NotificationState>((set, get) => ({
       set({ notifications: filtered, unreadCount });
     } catch (error) {
       console.error("Error deleting notification:", error);
-    }
-  },
-
-  deleteAll: async () => {
-    try {
-      await notificationService.deleteAllNotifications();
-      set({ notifications: [], unreadCount: 0 });
-    } catch (error) {
-      console.error("Error deleting all notifications:", error);
     }
   },
 }));

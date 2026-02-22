@@ -8,14 +8,14 @@
 import { useState, useEffect } from "react";
 import { DashboardLayout } from "@/components/layouts/dashboard-layout";
 import { Card, CardBody, Badge } from "@/components/ui";
-import { 
-  Ambulance, 
-  Phone, 
-  MapPin, 
+import {
+  Ambulance,
+  Phone,
+  MapPin,
   Clock,
   AlertCircle,
   CheckCircle,
-  XCircle
+  XCircle,
 } from "lucide-react";
 
 export default function EmergencyServicesPage() {
@@ -64,7 +64,10 @@ export default function EmergencyServicesPage() {
                   </p>
                 </div>
                 <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
-                  <Ambulance size={28} className="text-blue-600 dark:text-blue-400" />
+                  <Ambulance
+                    size={28}
+                    className="text-blue-600 dark:text-blue-400"
+                  />
                 </div>
               </div>
             </CardBody>
@@ -82,7 +85,10 @@ export default function EmergencyServicesPage() {
                   </p>
                 </div>
                 <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-xl">
-                  <CheckCircle size={28} className="text-green-600 dark:text-green-400" />
+                  <CheckCircle
+                    size={28}
+                    className="text-green-600 dark:text-green-400"
+                  />
                 </div>
               </div>
             </CardBody>
@@ -100,7 +106,10 @@ export default function EmergencyServicesPage() {
                   </p>
                 </div>
                 <div className="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-xl">
-                  <Clock size={28} className="text-purple-600 dark:text-purple-400" />
+                  <Clock
+                    size={28}
+                    className="text-purple-600 dark:text-purple-400"
+                  />
                 </div>
               </div>
             </CardBody>
@@ -124,13 +133,17 @@ export default function EmergencyServicesPage() {
             ) : services.length === 0 ? (
               <div className="text-center py-12">
                 <div className="p-4 bg-gray-100 dark:bg-gray-700 rounded-full w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-                  <Ambulance size={40} className="text-gray-400 dark:text-gray-500" />
+                  <Ambulance
+                    size={40}
+                    className="text-gray-400 dark:text-gray-500"
+                  />
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 mb-2 text-lg font-medium">
                   No emergency services dispatched yet
                 </p>
                 <p className="text-gray-500 dark:text-gray-500 text-sm">
-                  Emergency services will be automatically dispatched when accidents are reported
+                  Emergency services will be automatically dispatched when
+                  accidents are reported
                 </p>
               </div>
             ) : (
@@ -151,7 +164,10 @@ export default function EmergencyServicesPage() {
               <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-red-400 dark:hover:border-red-500 transition-colors">
                 <div className="flex items-start gap-3">
                   <div className="p-2 bg-red-100 dark:bg-red-900/30 rounded-lg">
-                    <Phone size={20} className="text-red-600 dark:text-red-400" />
+                    <Phone
+                      size={20}
+                      className="text-red-600 dark:text-red-400"
+                    />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-gray-100">
@@ -167,7 +183,10 @@ export default function EmergencyServicesPage() {
               <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-400 dark:hover:border-blue-500 transition-colors">
                 <div className="flex items-start gap-3">
                   <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                    <Ambulance size={20} className="text-blue-600 dark:text-blue-400" />
+                    <Ambulance
+                      size={20}
+                      className="text-blue-600 dark:text-blue-400"
+                    />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-gray-100">
@@ -183,7 +202,10 @@ export default function EmergencyServicesPage() {
               <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-green-400 dark:hover:border-green-500 transition-colors">
                 <div className="flex items-start gap-3">
                   <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                    <MapPin size={20} className="text-green-600 dark:text-green-400" />
+                    <MapPin
+                      size={20}
+                      className="text-green-600 dark:text-green-400"
+                    />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-gray-100">
