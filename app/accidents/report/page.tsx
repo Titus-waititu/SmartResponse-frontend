@@ -161,11 +161,11 @@ export default function AccidentReportPage() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-            <AlertTriangle className="text-red-600" size={32} />
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-3">
+            <AlertTriangle className="text-red-600 dark:text-red-500" size={32} />
             Report Accident
           </h1>
-          <p className="text-gray-600 mt-2">
+          <p className="text-gray-600 dark:text-gray-400 mt-2">
             Provide accident details and upload images for AI-powered severity
             analysis
           </p>
@@ -178,7 +178,7 @@ export default function AccidentReportPage() {
             e.stopPropagation();
             form.handleSubmit();
           }}
-          className="bg-white rounded-lg shadow-lg p-8 space-y-6"
+          className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 space-y-6"
         >
           {/* Description */}
           <form.Field
@@ -190,7 +190,7 @@ export default function AccidentReportPage() {
           >
             {(field) => (
               <div>
-                <label className="flex text-sm font-medium text-gray-700 mb-2 items-center gap-2">
+                <label className="flex text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 items-center gap-2">
                   <FileText size={18} />
                   Accident Description
                 </label>
@@ -200,7 +200,7 @@ export default function AccidentReportPage() {
                   onChange={(e) => field.handleChange(e.target.value)}
                   rows={4}
                   placeholder="Describe what happened..."
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                 />
                 {field.state.meta.errors && (
                   <p className="mt-1 text-sm text-red-600">
@@ -212,9 +212,9 @@ export default function AccidentReportPage() {
           </form.Field>
 
           {/* Location Section */}
-          <div className="border border-gray-200 rounded-lg p-6 space-y-4">
+          <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6 space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-2">
                 <MapPin size={20} />
                 Location Details
               </h3>
@@ -240,7 +240,7 @@ export default function AccidentReportPage() {
             >
               {(field) => (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Address
                   </label>
                   <input
@@ -249,7 +249,7 @@ export default function AccidentReportPage() {
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
                     placeholder="Enter accident location"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                   />
                   {field.state.meta.errors && (
                     <p className="mt-1 text-sm text-red-600">
@@ -265,7 +265,7 @@ export default function AccidentReportPage() {
               <form.Field name="latitude">
                 {(field) => (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Latitude
                     </label>
                     <input
@@ -276,7 +276,7 @@ export default function AccidentReportPage() {
                       onChange={(e) =>
                         field.handleChange(parseFloat(e.target.value))
                       }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     />
                   </div>
                 )}
@@ -285,7 +285,7 @@ export default function AccidentReportPage() {
               <form.Field name="longitude">
                 {(field) => (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Longitude
                     </label>
                     <input
@@ -296,7 +296,7 @@ export default function AccidentReportPage() {
                       onChange={(e) =>
                         field.handleChange(parseFloat(e.target.value))
                       }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     />
                   </div>
                 )}
@@ -306,13 +306,13 @@ export default function AccidentReportPage() {
 
           {/* Image Upload */}
           <div>
-            <label className="flex text-sm font-medium text-gray-700 mb-2 items-center gap-2">
+            <label className="flex text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 items-center gap-2">
               <Camera size={18} />
               Accident Images (Required)
             </label>
 
             {/* Upload Button */}
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-red-400 transition-colors">
+            <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-8 text-center hover:border-red-400 dark:hover:border-red-500 transition-colors">
               <input
                 type="file"
                 accept="image/*"
@@ -322,11 +322,11 @@ export default function AccidentReportPage() {
                 id="image-upload"
               />
               <label htmlFor="image-upload" className="cursor-pointer">
-                <Upload className="mx-auto text-gray-400 mb-2" size={48} />
-                <p className="text-gray-600 font-medium">
+                <Upload className="mx-auto text-gray-400 dark:text-gray-500 mb-2" size={48} />
+                <p className="text-gray-600 dark:text-gray-300 font-medium">
                   Click to upload accident images
                 </p>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                   PNG, JPG up to 10MB (Max 5 images)
                 </p>
               </label>
@@ -360,7 +360,7 @@ export default function AccidentReportPage() {
             <button
               type="button"
               onClick={() => router.back()}
-              className="flex-1 px-6 py-3 border border-gray-300 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+              className="flex-1 px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-gray-900 dark:text-gray-100"
             >
               Cancel
             </button>
