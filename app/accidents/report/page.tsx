@@ -162,7 +162,10 @@ export default function AccidentReportPage() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-3">
-            <AlertTriangle className="text-red-600 dark:text-red-500" size={32} />
+            <AlertTriangle
+              className="text-red-600 dark:text-red-500"
+              size={32}
+            />
             Report Accident
           </h1>
           <p className="text-gray-600 dark:text-gray-400 mt-2">
@@ -322,7 +325,10 @@ export default function AccidentReportPage() {
                 id="image-upload"
               />
               <label htmlFor="image-upload" className="cursor-pointer">
-                <Upload className="mx-auto text-gray-400 dark:text-gray-500 mb-2" size={48} />
+                <Upload
+                  className="mx-auto text-gray-400 dark:text-gray-500 mb-2"
+                  size={48}
+                />
                 <p className="text-gray-600 dark:text-gray-300 font-medium">
                   Click to upload accident images
                 </p>
