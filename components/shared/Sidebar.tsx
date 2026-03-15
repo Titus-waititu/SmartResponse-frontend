@@ -68,7 +68,7 @@ export function Sidebar() {
   }
 
   return (
-    <aside className="w-64 bg-slate-900 text-slate-300 flex flex-col h-screen fixed top-0 left-0 overflow-y-auto">
+    <aside className="w-64 bg-slate-50 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 flex flex-col h-screen fixed top-0 left-0 overflow-y-auto">
       <div className="p-6 flex items-center gap-3">
         <div className="w-8 h-8 rounded bg-linear-to-tr from-brand-red to-orange-400 flex items-center justify-center">
           <Zap className="text-white w-5 h-5" />
@@ -92,9 +92,9 @@ export function Sidebar() {
               <button
                 key={link.name}
                 onClick={() => addToast("This feature is currently in development.", "info")}
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:bg-slate-800/50 hover:text-white text-slate-400"
-              >
-                <Icon className="w-5 h-5 text-slate-400" />
+                  className="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:bg-slate-200 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white text-slate-500 dark:text-slate-400"
+                >
+                  <Icon className="w-5 h-5 text-slate-500 dark:text-slate-400" />
                 {link.name}
               </button>
             );
