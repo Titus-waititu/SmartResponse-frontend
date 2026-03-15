@@ -1,0 +1,78 @@
+
+C:\Users\user\OneDrive\Desktop\Personal Projects\Smart Accident Report System\frontend\app\(auth)\register\page.tsx
+   9:8   warning  'RegisterFormValues' is defined but never used  @typescript-eslint/no-unused-vars
+  32:32  warning  '_' is assigned a value but never used          @typescript-eslint/no-unused-vars
+
+C:\Users\user\OneDrive\Desktop\Personal Projects\Smart Accident Report System\frontend\app\(protected)\reports\create\page.tsx
+  9:8  warning  'CreateReportFormValues' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\user\OneDrive\Desktop\Personal Projects\Smart Accident Report System\frontend\app\spa\routes\table.tsx
+  24:17  warning  Compilation Skipped: Use of incompatible library
+
+This API returns functions which cannot be memoized without leading to stale UI. To prevent this, by default React Compiler will skip memoizing this component/hook. However, you may see issues if values from this API are passed to other components/hooks that are memoized.
+
+C:\Users\user\OneDrive\Desktop\Personal Projects\Smart Accident Report System\frontend\app\spa\routes\table.tsx:24:17
+  22 |   const data = React.useMemo(() => getSeedReports(), []);
+  23 |
+> 24 |   const table = useReactTable({
+     |                 ^^^^^^^^^^^^^ TanStack Table's `useReactTable()` API returns functions that cannot be memoized safely
+  25 |     data,
+  26 |     columns,
+  27 |     getCoreRowModel: getCoreRowModel(),  react-hooks/incompatible-library
+
+C:\Users\user\OneDrive\Desktop\Personal Projects\Smart Accident Report System\frontend\components\dashboard\admin\AdminPanels.tsx
+  14:15  warning  'ReportStatus' is defined but never used    @typescript-eslint/no-unused-vars
+  15:15  warning  'DispatchStatus' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\user\OneDrive\Desktop\Personal Projects\Smart Accident Report System\frontend\components\dashboard\officer\IncidentList.tsx
+   3:8    warning  'Link' is defined but never used                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+  11:3    warning  'ReportStatusBadge' is defined but never used                                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+  16:18   warning  'Navigation' is defined but never used                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+  16:30   warning  'SignalHigh' is defined but never used                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+  16:51   warning  'ImageIcon' is defined but never used                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+  55:12   warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  68:135  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  68:135  warning  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images                                                                                                                                                                                jsx-a11y/alt-text
+  69:135  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  69:135  warning  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images                                                                                                                                                                                jsx-a11y/alt-text
+
+C:\Users\user\OneDrive\Desktop\Personal Projects\Smart Accident Report System\frontend\components\dashboard\responder\EmergencyQueue.tsx
+    3:8   warning  'Link' is defined but never used                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+    8:10  warning  'DispatchStatusBadge' is defined but never used                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+   11:18  warning  'Navigation' is defined but never used                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+   13:10  warning  'formatDate' is defined but never used                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+   22:5   warning  'dataUpdatedAt' is assigned a value but never used                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+  142:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\user\OneDrive\Desktop\Personal Projects\Smart Accident Report System\frontend\components\shared\Sidebar.tsx
+  4:15  warning  'ReactNode' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\user\OneDrive\Desktop\Personal Projects\Smart Accident Report System\frontend\components\shared\Topbar.tsx
+   3:16  warning  'Search' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+  13:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\user\OneDrive\Desktop\Personal Projects\Smart Accident Report System\frontend\components\shared\Topbar.tsx:13:5
+  11 |
+  12 |   useEffect(() => {
+> 13 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  14 |   }, []);
+  15 |
+  16 |   return (  react-hooks/set-state-in-effect
+
+C:\Users\user\OneDrive\Desktop\Personal Projects\Smart Accident Report System\frontend\lib\api\auth.api.ts
+  1:10  warning  'apiClient' is defined but never used   @typescript-eslint/no-unused-vars
+  2:10  warning  'API_ROUTES' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\user\OneDrive\Desktop\Personal Projects\Smart Accident Report System\frontend\lib\api\dashboard.api.ts
+  1:10  warning  'apiClient' is defined but never used   @typescript-eslint/no-unused-vars
+  2:10  warning  'API_ROUTES' is defined but never used  @typescript-eslint/no-unused-vars
+
+Γ£û 29 problems (1 error, 28 warnings)
+
