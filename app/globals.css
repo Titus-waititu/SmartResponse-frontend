@@ -3,30 +3,30 @@
 @theme {
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-brand-red: #F54A4A;
-  --color-brand-dark: #1E2A3A;
-  --color-brand-blue: #2B3A5A;
+  --color-brand-red: #f54a4a;
+  --color-brand-dark: #1e2a3a;
+  --color-brand-blue: #2b3a5a;
   --color-glass-bg: rgba(255, 255, 255, 0.4);
   --color-glass-border: rgba(255, 255, 255, 0.2);
 }
 
 :root {
-  --background: #F4F7FB;
-  --foreground: #1E2A3A;
-  --primary: #F54A4A;
+  --background: #f4f7fb;
+  --foreground: #1e2a3a;
+  --primary: #f54a4a;
   --primary-foreground: #ffffff;
   --card: #ffffff;
-  --card-foreground: #1E2A3A;
+  --card-foreground: #1e2a3a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #111827; 
-    --foreground: #F3F4F6;
-    --primary: #EF4444; 
+    --background: #111827;
+    --foreground: #f3f4f6;
+    --primary: #ef4444;
     --primary-foreground: #ffffff;
-    --card: #1E293B;
-    --card-foreground: #F3F4F6;
+    --card: #1e293b;
+    --card-foreground: #f3f4f6;
   }
 }
 

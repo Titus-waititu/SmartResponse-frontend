@@ -55,14 +55,7 @@ export function middleware(request: NextRequest) {
         new URL(getDashboardPath(role), request.url),
       );
     }
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
-
-  // ── 3. Any protected path without a token → send to login ─────────────────
-  if (!isAuthenticated || !role) {
-    const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("next", pathname);
-    return NextResponse.redirect(loginUrl);
+    return NextResponse.next();
   }
 
   // ── 4. Role-mismatch check on dashboard paths ─────────────────────────────
