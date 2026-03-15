@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { type ReactNode } from "react";
@@ -22,22 +23,21 @@ export function Sidebar() {
   const pathname = usePathname();
   const user = useAuthStore((s) => s.user);
   const { logout } = useAuth();
+  const { addToast } = useToastStore();
 
   if (!user) return null;
 
   const role = user.role;
 
   // Define navigation links based on role
-  let links: Array<{ name: string; href: string; icon: React.ElementType }> =
-    [];
-
+  let links: Array<{ name: string; href: string; icon: React.ElementType }> = [];
   if (role === "USER") {
     links = [
       { name: "Dashboard", href: "/dashboard/user", icon: LayoutDashboard },
       { name: "Report Accident", href: "/reports/create", icon: FileWarning },
       {
         name: "NearBy Accidents",
-        href: "/dashboard/user/nearby",
+        href: "#",
         icon: MapPin,
       },
       { name: "Notifications", href: "#", icon: Bell },
@@ -86,6 +86,20 @@ export function Sidebar() {
               link.href !== "#" &&
               link.href !== `/dashboard/${role.toLowerCase()}`);
           const Icon = link.icon;
+          
+          if (link.href === "#") {
+            return (
+              <button
+                key={link.name}
+                onClick={() => addToast("This feature is currently in development.", "info")}
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:bg-slate-800/50 hover:text-white text-slate-400"
+              >
+                <Icon className="w-5 h-5 text-slate-400" />
+                {link.name}
+              </button>
+            );
+          }
+          
           return (
             <Link
               key={link.name}
