@@ -20,7 +20,7 @@ export default function HowItWorksPage() {
 
         <div className="relative">
           {/* Connecting line for desktop */}
-          <div className="hidden lg:block absolute top-[4rem] left-[15%] right-[15%] h-1 bg-gradient-to-r from-brand-red/10 via-brand-red/40 to-brand-red/10 -z-10 rounded-full" />
+          <div className="hidden lg:block absolute top-16 left-[15%] right-[15%] h-1 bg-linear-to-r from-brand-red/10 via-brand-red/40 to-brand-red/10 -z-10 rounded-full" />
 
           <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8">
             <div className="flex flex-col items-center max-w-sm text-center relative">
@@ -80,7 +80,7 @@ export default function HowItWorksPage() {
         </div>
       </main>
 
-      <footer className="bg-slate-950 text-white py-12 px-8 text-center text-sm text-slate-400 border-t border-slate-800 mt-auto">
+      <footer className="bg-slate-950 py-12 px-8 text-center text-sm text-slate-400 border-t border-slate-800 mt-auto">
         &copy; 2026 Smart Accident Reporting System. All rights reserved.
       </footer>
     </div>

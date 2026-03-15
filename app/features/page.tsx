@@ -70,7 +70,7 @@ export default function FeaturesPage() {
         </div>
       </main>
 
-      <footer className="bg-slate-950 text-white py-12 px-8 text-center text-sm text-slate-400 border-t border-slate-800 mt-auto">
+      <footer className="bg-slate-950 py-12 px-8 text-center text-sm text-slate-400 border-t border-slate-800 mt-auto">
         &copy; 2026 Smart Accident Reporting System. All rights reserved.
       </footer>
     </div>
