@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useForm } from '@tanstack/react-form';
-import { zodValidator } from '@tanstack/zod-form-adapter';
+import { useForm } from "@tanstack/react-form";
+import { zodValidator } from "@tanstack/zod-form-adapter";
 import { useAuth } from "@/lib/hooks/useAuth";
 import {
   registerSchema,
@@ -24,7 +24,7 @@ export default function RegisterPage() {
       confirmPassword: "",
       role: "USER" as UserRole,
     },
-    validatorAdapter: zodValidator(),
+
     validators: {
       onChange: registerSchema,
     },
@@ -51,9 +51,18 @@ export default function RegisterPage() {
       </div>
 
       <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
-        <Link href="/login" className="text-lg font-medium text-slate-400 hover:text-white transition pb-4 -mb-4.25 cursor-pointer">Login</Link>
-        <div className="text-lg font-semibold border-b-2 border-brand-red pb-4 -mb-4.25 cursor-pointer">Register</div>
-        <div className="text-lg font-medium text-slate-400 hover:text-white transition pb-4 -mb-4.25 cursor-pointer hidden sm:block">Reset Password</div>
+        <Link
+          href="/login"
+          className="text-lg font-medium text-slate-400 hover:text-white transition pb-4 -mb-4.25 cursor-pointer"
+        >
+          Login
+        </Link>
+        <div className="text-lg font-semibold border-b-2 border-brand-red pb-4 -mb-4.25 cursor-pointer">
+          Register
+        </div>
+        <div className="text-lg font-medium text-slate-400 hover:text-white transition pb-4 -mb-4.25 cursor-pointer hidden sm:block">
+          Reset Password
+        </div>
       </div>
 
       <form
@@ -85,7 +94,9 @@ export default function RegisterPage() {
                 />
               </div>
               {field.state.meta.errors.length > 0 && (
-                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{field.state.meta.errors.join(", ")}</p>        
+                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">
+                  {field.state.meta.errors.join(", ")}
+                </p>
               )}
             </div>
           )}
@@ -112,7 +123,9 @@ export default function RegisterPage() {
                 />
               </div>
               {field.state.meta.errors.length > 0 && (
-                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{field.state.meta.errors.join(", ")}</p>        
+                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">
+                  {field.state.meta.errors.join(", ")}
+                </p>
               )}
             </div>
           )}
@@ -122,7 +135,12 @@ export default function RegisterPage() {
         <form.Field name="role">
           {(field) => (
             <div>
-              <label htmlFor={field.name} className="block text-sm font-medium text-slate-300 mb-2 pl-2">Select Role</label>
+              <label
+                htmlFor={field.name}
+                className="block text-sm font-medium text-slate-300 mb-2 pl-2"
+              >
+                Select Role
+              </label>
               <select
                 id={field.name}
                 name={field.name}
@@ -132,13 +150,19 @@ export default function RegisterPage() {
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent transition text-white appearance-none cursor-pointer"
               >
                 {ALL_ROLES.map((r) => (
-                  <option key={r} value={r} className="bg-slate-900 border-none">
+                  <option
+                    key={r}
+                    value={r}
+                    className="bg-slate-900 border-none"
+                  >
                     {r.charAt(0) + r.slice(1).toLowerCase()}
                   </option>
                 ))}
               </select>
               {field.state.meta.errors.length > 0 && (
-                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{field.state.meta.errors.join(", ")}</p>        
+                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">
+                  {field.state.meta.errors.join(", ")}
+                </p>
               )}
             </div>
           )}
@@ -165,7 +189,9 @@ export default function RegisterPage() {
                 />
               </div>
               {field.state.meta.errors.length > 0 && (
-                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{field.state.meta.errors.join(", ")}</p>        
+                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">
+                  {field.state.meta.errors.join(", ")}
+                </p>
               )}
             </div>
           )}
@@ -192,17 +218,26 @@ export default function RegisterPage() {
                 />
               </div>
               {field.state.meta.errors.length > 0 && (
-                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{field.state.meta.errors.join(", ")}</p>        
+                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">
+                  {field.state.meta.errors.join(", ")}
+                </p>
               )}
             </div>
           )}
         </form.Field>
 
         {/* Server-side error */}
-        {serverError != null && <p className="text-red-400 text-sm mt-4 text-center font-medium bg-red-900/20 p-3 rounded-xl border border-red-500/30" role="alert">{serverError}</p>}
+        {serverError != null && (
+          <p
+            className="text-red-400 text-sm mt-4 text-center font-medium bg-red-900/20 p-3 rounded-xl border border-red-500/30"
+            role="alert"
+          >
+            {serverError}
+          </p>
+        )}
 
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           disabled={registerPending}
           className="w-full py-4 mt-8 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-bold text-lg transition flex items-center justify-center gap-2 shadow-xl shadow-black/20 border border-white/10"
         >
@@ -211,13 +246,21 @@ export default function RegisterPage() {
               <Loader2 className="w-5 h-5 animate-spin" />
               Creating account…
             </>
-          ) : "Register"}
+          ) : (
+            "Register"
+          )}
         </button>
       </form>
 
       <div className="mt-8 text-center">
         <p className="text-slate-400 text-sm">
-          Already have an account? <Link href="/login" className="text-white hover:underline font-semibold ml-1">Login</Link>
+          Already have an account?{" "}
+          <Link
+            href="/login"
+            className="text-white hover:underline font-semibold ml-1"
+          >
+            Login
+          </Link>
         </p>
       </div>
     </div>

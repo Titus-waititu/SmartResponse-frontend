@@ -1,0 +1,3 @@
+lib/api/dashboard.api.ts(10,7): error TS2741: Property 'resolvedToday' is missing in type '{ totalReports: number; reportsByStatus: { PENDING: number; UNDER_REVIEW: number; RESOLVED: number; REJECTED: number; }; totalIncidents: number; incidentsByDispatchStatus: { DISPATCHED: number; EN_ROUTE: number; ON_SCENE: number; COMPLETED: number; }; reportsToday: number; }' but required in type 'AnalyticsSummary'.
+middleware.ts(66,40): error TS2345: Argument of type 'UserRole | undefined' is not assignable to parameter of type 'UserRole'.
+  Type 'undefined' is not assignable to type 'UserRole'.

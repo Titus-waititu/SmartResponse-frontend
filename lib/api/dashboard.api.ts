@@ -8,9 +8,22 @@ import { AnalyticsSummary, DispatchLog } from "@/lib/types/incident";
 const mockIncidents: Incident[] = [];
 const mockReports: Report[] = [];
 const mockAnalytics: AnalyticsSummary = {
+  totalReports: 100,
+  reportsByStatus: {
+    PENDING: 30,
+    UNDER_REVIEW: 20,
+    RESOLVED: 40,
+    REJECTED: 10,
+  },
   totalIncidents: 100,
-  resolved: 50,
-  pending: 50,
+  incidentsByDispatchStatus: {
+    DISPATCHED: 40,
+    EN_ROUTE: 10,
+    ON_SCENE: 20,
+    COMPLETED: 30,
+  },
+  reportsToday: 15,
+  resolvedToday: 10,
 };
 const mockLogs: DispatchLog[] = [];
 // -----------------

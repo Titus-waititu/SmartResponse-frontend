@@ -16,7 +16,6 @@ export default function LoginPage() {
       email: "",
       password: "",
     },
-    validatorAdapter: zodValidator(),
     validators: {
       onChange: loginSchema,
     },

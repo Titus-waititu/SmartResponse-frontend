@@ -42,7 +42,7 @@ export function middleware(request: NextRequest) {
     if (isAuthenticated && role) {
       // Already logged in → bounce to the correct dashboard
       return NextResponse.redirect(
-        new URL(getDashboardPath(role), request.url),
+        new URL(getDashboardPath(role as UserRole), request.url),
       );
     }
     return NextResponse.next();
@@ -52,7 +52,7 @@ export function middleware(request: NextRequest) {
   if (pathname === "/") {
     if (isAuthenticated && role) {
       return NextResponse.redirect(
-        new URL(getDashboardPath(role), request.url),
+        new URL(getDashboardPath(role as UserRole), request.url),
       );
     }
     return NextResponse.next();
@@ -63,10 +63,10 @@ export function middleware(request: NextRequest) {
     const base = getDashboardBase(pathname);
     if (base) {
       const allowed = DASHBOARD_ALLOWED_ROLES[base];
-      if (allowed && !allowed.includes(role)) {
+      if (allowed && (!role || !allowed.includes(role as UserRole))) {
         // Redirect to the user's own dashboard instead of a 403
         return NextResponse.redirect(
-          new URL(getDashboardPath(role), request.url),
+          new URL(getDashboardPath((role as UserRole) || "User"), request.url),
         );
       }
     }

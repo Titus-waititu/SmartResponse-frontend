@@ -1,0 +1,25 @@
+app/(protected)/reports/create/page.tsx(40,7): error TS2322: Type 'ZodObject<{ description: ZodString; latitude: ZodNumber; longitude: ZodNumber; image: ZodOptional<ZodEffects<ZodEffects<ZodType<File, ZodTypeDef, File>, File, File>, File, File>>; }, "strip", ZodTypeAny, { ...; }, { ...; }>' is not assignable to type 'FormValidateOrFn<{ description: string; latitude: number; longitude: number; image: File | undefined; }> | undefined'.
+  Type 'ZodObject<{ description: ZodString; latitude: ZodNumber; longitude: ZodNumber; image: ZodOptional<ZodEffects<ZodEffects<ZodType<File, ZodTypeDef, File>, File, File>, File, File>>; }, "strip", ZodTypeAny, { ...; }, { ...; }>' is not assignable to type 'StandardSchemaV1<{ description: string; latitude: number; longitude: number; image: File | undefined; }, unknown>'.
+    The types of ''~standard'.types' are incompatible between these types.
+      Type 'Types<{ description: string; latitude: number; longitude: number; image?: File | undefined; }, { description: string; latitude: number; longitude: number; image?: File | undefined; }> | undefined' is not assignable to type 'StandardSchemaV1Types<{ description: string; latitude: number; longitude: number; image: File | undefined; }, unknown> | undefined'.
+        Type 'Types<{ description: string; latitude: number; longitude: number; image?: File | undefined; }, { description: string; latitude: number; longitude: number; image?: File | undefined; }>' is not assignable to type 'StandardSchemaV1Types<{ description: string; latitude: number; longitude: number; image: File | undefined; }, unknown>'.
+          Types of property 'input' are incompatible.
+            Type '{ description: string; latitude: number; longitude: number; image?: File | undefined; }' is not assignable to type '{ description: string; latitude: number; longitude: number; image: File | undefined; }'.
+              Property 'image' is optional in type '{ description: string; latitude: number; longitude: number; image?: File | undefined; }' but required in type '{ description: string; latitude: number; longitude: number; image: File | undefined; }'.
+components/dashboard/officer/IncidentList.tsx(86,40): error TS2339: Property 'severityScore' does not exist on type 'Report'.
+components/dashboard/officer/IncidentList.tsx(88,49): error TS2339: Property 'severityScore' does not exist on type 'Report'.
+components/dashboard/officer/IncidentList.tsx(151,84): error TS2339: Property 'severityScore' does not exist on type 'Report'.
+components/dashboard/responder/EmergencyQueue.tsx(53,37): error TS2339: Property 'severityScore' does not exist on type 'Report'.
+components/dashboard/responder/EmergencyQueue.tsx(54,37): error TS2339: Property 'severityScore' does not exist on type 'Report'.
+components/dashboard/responder/EmergencyQueue.tsx(57,38): error TS2339: Property 'severityScore' does not exist on type 'Report'.
+components/dashboard/responder/EmergencyQueue.tsx(57,95): error TS2339: Property 'severityScore' does not exist on type 'Report'.
+components/dashboard/responder/EmergencyQueue.tsx(118,186): error TS2339: Property 'severityScore' does not exist on type 'Report'.
+components/dashboard/responder/EmergencyQueue.tsx(121,81): error TS2339: Property 'severityScore' does not exist on type 'Report'.
+components/dashboard/user/UserReportList.tsx(82,76): error TS2339: Property 'severityScore' does not exist on type 'Report'.
+components/dashboard/user/UserReportList.tsx(82,100): error TS2339: Property 'severityScore' does not exist on type 'Report'.
+components/dashboard/user/UserReportList.tsx(84,25): error TS2339: Property 'severityScore' does not exist on type 'Report'.
+lib/api/dashboard.api.ts(12,3): error TS2353: Object literal may only specify known properties, and 'resolved' does not exist in type 'AnalyticsSummary'.
+middleware.ts(66,40): error TS2345: Argument of type 'UserRole | undefined' is not assignable to parameter of type 'UserRole'.
+  Type 'undefined' is not assignable to type 'UserRole'.
+middleware.ts(69,36): error TS2345: Argument of type 'UserRole | undefined' is not assignable to parameter of type 'UserRole'.
+  Type 'undefined' is not assignable to type 'UserRole'.

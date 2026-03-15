@@ -34,9 +34,8 @@ export default function CreateReportPage() {
       description: "",
       latitude: 0 as number,
       longitude: 0 as number,
-      image: undefined as File | undefined,
-    },
-    validatorAdapter: zodValidator(),
+      image: undefined,
+    } as CreateReportFormValues,
     validators: {
       onChange: createReportSchema,
     },

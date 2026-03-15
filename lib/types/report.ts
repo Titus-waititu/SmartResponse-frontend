@@ -9,6 +9,7 @@ export interface Report {
   longitude: number;
   imageUrl: string | null;
   status: ReportStatus;
+  severityScore?: number | null;
   createdAt: string;
   updatedAt: string;
   author: Pick<User, "id" | "name" | "email">;
