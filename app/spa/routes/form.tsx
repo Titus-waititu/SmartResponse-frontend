@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { useForm } from "@tanstack/react-form";
+import { zodValidator } from "@tanstack/zod-form-adapter";
 import { z } from "zod";
 
 const schema = z.object({
