@@ -38,11 +38,11 @@ export function Sidebar() {
       { name: "Report Accident", href: "/reports/create", icon: FileWarning },
       {
         name: "NearBy Accidents",
-        href: "#",
+        href: "/dashboard/user/nearby",
         icon: MapPin,
       },
-      { name: "Notifications", href: "#", icon: Bell },
-      { name: "Settings", href: "#", icon: Settings },
+      { name: "Notifications", href: "/dashboard/user/notifications", icon: Bell },
+      { name: "Settings", href: "/dashboard/user/settings", icon: Settings },
     ];
   } else if (role === "OFFICER" || role === "RESPONDER") {
     links = [
@@ -51,20 +51,20 @@ export function Sidebar() {
         href: `/dashboard/${role.toLowerCase()}`,
         icon: ClipboardList,
       },
-      { name: "Map Panel", href: "#", icon: MapPin },
-      { name: "Reports", href: "#", icon: FileWarning },
-      { name: "Status", href: "#", icon: BarChart3 },
-      { name: "Profile", href: "#", icon: Settings },
+      { name: "Map Panel", href: `/dashboard/${role.toLowerCase()}/map`, icon: MapPin },
+      { name: "Reports", href: `/dashboard/${role.toLowerCase()}/reports`, icon: FileWarning },
+      { name: "Status", href: `/dashboard/${role.toLowerCase()}/status`, icon: BarChart3 },
+      { name: "Profile", href: `/dashboard/${role.toLowerCase()}/profile`, icon: Settings },
     ];
   } else if (role === "ADMIN") {
     links = [
       { name: "Overview", href: "/dashboard/admin", icon: LayoutDashboard },
-      { name: "Reports", href: "#", icon: ClipboardList },
-      { name: "AI Analytics", href: "#", icon: BarChart3 },
-      { name: "Dispatch Logs", href: "#", icon: MapPin },
-      { name: "Users", href: "#", icon: Users },
-      { name: "Emergency Services", href: "#", icon: Ambulance },
-      { name: "Settings", href: "#", icon: Settings },
+      { name: "Reports", href: "/dashboard/admin/reports", icon: ClipboardList },
+      { name: "AI Analytics", href: "/dashboard/admin/analytics", icon: BarChart3 },
+      { name: "Dispatch Logs", href: "/dashboard/admin/dispatch", icon: MapPin },
+      { name: "Users", href: "/dashboard/admin/users", icon: Users },
+      { name: "Emergency Services", href: "/dashboard/admin/services", icon: Ambulance },
+      { name: "Settings", href: "/dashboard/admin/settings", icon: Settings },
     ];
   }
 
@@ -74,7 +74,7 @@ export function Sidebar() {
         <div className="w-8 h-8 rounded bg-linear-to-tr from-brand-red to-orange-400 flex items-center justify-center">
           <Zap className="text-white w-5 h-5" />
         </div>
-        <span className="font-bold text-white tracking-tight">
+        <span className="font-bold text-slate-900 dark:text-white tracking-tight">
           Smart Accident Reporting
         </span>
       </div>
@@ -88,33 +88,18 @@ export function Sidebar() {
               link.href !== `/dashboard/${role.toLowerCase()}`);
           const Icon = link.icon;
 
-          if (link.href === "#") {
-            return (
-              <button
-                key={link.name}
-                onClick={() =>
-                  addToast("This feature is currently in development.", "info")
-                }
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:bg-slate-200 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white text-slate-500 dark:text-slate-400"
-              >
-                <Icon className="w-5 h-5 text-slate-500 dark:text-slate-400" />
-                {link.name}
-              </button>
-            );
-          }
-
           return (
             <Link
               key={link.name}
               href={link.href}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${
-                isActive
-                  ? "bg-slate-800 text-white font-semibold"
-                  : "hover:bg-slate-800/50 hover:text-white"
+                  isActive
+                    ? "bg-slate-200 dark:bg-slate-800 text-brand-red dark:text-white font-semibold"
+                    : "hover:bg-slate-200 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white text-slate-500 dark:text-slate-400"
               }`}
             >
               <Icon
-                className={`w-5 h-5 ${isActive ? "text-brand-red" : "text-slate-400"}`}
+                className={`w-5 h-5 ${isActive ? "text-brand-red dark:text-brand-red" : "text-slate-500 dark:text-slate-400"}`}
               />
               {link.name}
             </Link>
@@ -122,10 +107,10 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="p-4 border-t border-slate-800">
+      <div className="p-4 border-t border-slate-200 dark:border-slate-800">
         <button
           onClick={() => logout()}
-          className="flex items-center gap-3 px-4 py-3 w-full text-left rounded-xl transition-colors hover:bg-slate-800 hover:text-white text-slate-400"
+          className="flex items-center gap-3 px-4 py-3 w-full text-left rounded-xl transition-colors hover:bg-slate-200 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white text-slate-500 dark:text-slate-400"
         >
           <LogOut className="w-5 h-5" />
           Logout
@@ -134,3 +119,5 @@ export function Sidebar() {
     </aside>
   );
 }
+
+
