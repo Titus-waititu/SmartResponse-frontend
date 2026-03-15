@@ -78,3 +78,6 @@ export const adminApi = {
   /** GET /admin/dispatch-logs */
   getDispatchLogs: async (): Promise<DispatchLog[]> => {
     return new Promise((resolve) => setTimeout(() => resolve(mockLogs), 400));
+  },
+};
+

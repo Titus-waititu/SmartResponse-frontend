@@ -32,7 +32,7 @@ export const authApi = {
     if (credentials.email.includes("admin")) role = "ADMIN";
     if (credentials.email.includes("officer")) role = "OFFICER";
     if (credentials.email.includes("responder")) role = "RESPONDER";
-    
+
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve({
@@ -53,11 +53,11 @@ export const authApi = {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve({
-          user: { 
-            id: "u_2", 
-            email: credentials.email, 
-            name: credentials.name, 
-            role: credentials.role || "USER" 
+          user: {
+            id: "u_2",
+            email: credentials.email,
+            name: credentials.name,
+            role: credentials.role || "USER",
           },
           tokens: mockTokens,
         });
@@ -75,7 +75,7 @@ export const authApi = {
       setTimeout(() => {
         resolve({
           ...mockUser,
-          role: "USER" // Note: This resets on reload if unpersisted, but it's enough to clear network errors.
+          role: "USER", // Note: This resets on reload if unpersisted, but it's enough to clear network errors.
         });
       }, 600);
     });
@@ -89,5 +89,5 @@ export const authApi = {
     return new Promise((resolve) => {
       setTimeout(resolve, 400);
     });
-  }
+  },
 };
