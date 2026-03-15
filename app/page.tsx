@@ -18,13 +18,20 @@ export default function LandingPage() {
             AI-Powered Emergency Response in Seconds
           </h1>
           <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-            Upload accident images. Our AI analyzes severity and automatically dispatches emergency services.
+            Upload accident images. Our AI analyzes severity and automatically
+            dispatches emergency services.
           </p>
           <div className="flex items-center justify-center lg:justify-start gap-4">
-            <Link href="/reports/create" className="px-6 py-3 rounded-full bg-brand-red text-white font-semibold hover:bg-red-600 transition shadow-lg shadow-red-500/30 flex items-center gap-2">
+            <Link
+              href="/reports/create"
+              className="px-6 py-3 rounded-full bg-brand-red text-white font-semibold hover:bg-red-600 transition shadow-lg shadow-red-500/30 flex items-center gap-2"
+            >
               Report Accident <ChevronRight className="w-4 h-4" />
             </Link>
-            <Link href="/how-it-works" className="px-6 py-3 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition flex items-center gap-2 shadow-sm">
+            <Link
+              href="/how-it-works"
+              className="px-6 py-3 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition flex items-center gap-2 shadow-sm"
+            >
               See How It Works <Play className="w-4 h-4" />
             </Link>
           </div>
@@ -34,16 +41,20 @@ export default function LandingPage() {
           {/* Mock Dashboard Graphic */}
           <div className="relative mx-auto max-w-lg bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl border border-white/40 dark:border-slate-700/50 rounded-2xl shadow-2xl p-6">
             <div className="flex items-center gap-2 mb-4 px-2">
-             <div className="w-3 h-3 rounded-full bg-red-400" />
-             <div className="w-3 h-3 rounded-full bg-amber-400" />
-             <div className="w-3 h-3 rounded-full bg-green-400" />
+              <div className="w-3 h-3 rounded-full bg-red-400" />
+              <div className="w-3 h-3 rounded-full bg-amber-400" />
+              <div className="w-3 h-3 rounded-full bg-green-400" />
             </div>
             <div className="bg-slate-100 dark:bg-slate-900 rounded-xl h-64 overflow-hidden relative">
               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1543393470-bce4eb3e9db7?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="bg-black/60 backdrop-blur-sm p-4 rounded-xl text-white text-center border border-white/20">
-                  <div className="text-3xl font-black text-brand-red mb-1">85</div>
-                  <div className="text-xs font-medium uppercase tracking-wider">Severity Score</div>
+                  <div className="text-3xl font-black text-brand-red mb-1">
+                    85
+                  </div>
+                  <div className="text-xs font-medium uppercase tracking-wider">
+                    Severity Score
+                  </div>
                 </div>
               </div>
             </div>
@@ -60,24 +71,42 @@ export default function LandingPage() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4">Trust</h2>
-            <p className="text-slate-600 dark:text-slate-400">Vital statistics that build confidence</p>
+            <p className="text-slate-600 dark:text-slate-400">
+              Vital statistics that build confidence
+            </p>
           </div>
           <div className="flex flex-wrap justify-center gap-12 text-center">
             <div>
-              <div className="text-5xl font-extrabold text-brand-red mb-2">4.2m</div>
-              <div className="text-slate-500 dark:text-slate-400 font-medium">Average dispatch time</div>
+              <div className="text-5xl font-extrabold text-brand-red mb-2">
+                4.2m
+              </div>
+              <div className="text-slate-500 dark:text-slate-400 font-medium">
+                Average dispatch time
+              </div>
             </div>
             <div>
-              <div className="text-5xl font-extrabold text-brand-red mb-2">90%</div>
-              <div className="text-slate-500 dark:text-slate-400 font-medium">AI Accuracy</div>
+              <div className="text-5xl font-extrabold text-brand-red mb-2">
+                90%
+              </div>
+              <div className="text-slate-500 dark:text-slate-400 font-medium">
+                AI Accuracy
+              </div>
             </div>
             <div>
-              <div className="text-5xl font-extrabold text-brand-red mb-2">34k</div>
-              <div className="text-slate-500 dark:text-slate-400 font-medium">Emergencies handled</div>
+              <div className="text-5xl font-extrabold text-brand-red mb-2">
+                34k
+              </div>
+              <div className="text-slate-500 dark:text-slate-400 font-medium">
+                Emergencies handled
+              </div>
             </div>
             <div>
-              <div className="text-5xl font-extrabold text-brand-red mb-2">-22%</div>
-              <div className="text-slate-500 dark:text-slate-400 font-medium">Reduction in response time</div>
+              <div className="text-5xl font-extrabold text-brand-red mb-2">
+                -22%
+              </div>
+              <div className="text-slate-500 dark:text-slate-400 font-medium">
+                Reduction in response time
+              </div>
             </div>
           </div>
         </div>
@@ -86,18 +115,31 @@ export default function LandingPage() {
       {/* CTA / Footer */}
       <footer className="bg-slate-950 text-white py-16 px-8 text-center pt-24">
         <div className="max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl font-bold mb-6">Save Lives Faster with Intelligent Reporting</h2>
-          <Link href="/register" className="inline-block px-8 py-4 rounded-full bg-brand-red text-white font-bold hover:bg-red-600 transition shadow-lg shadow-red-500/20 text-lg">
+          <h2 className="text-4xl font-bold mb-6">
+            Save Lives Faster with Intelligent Reporting
+          </h2>
+          <Link
+            href="/register"
+            className="inline-block px-8 py-4 rounded-full bg-brand-red text-white font-bold hover:bg-red-600 transition shadow-lg shadow-red-500/20 text-lg"
+          >
             Get Started
           </Link>
         </div>
-        
+
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 max-w-6xl mx-auto text-sm text-slate-400">
           <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-white transition">Privacy</Link>
-            <Link href="/terms" className="hover:text-white transition">Terms</Link>
-            <Link href="/contact" className="hover:text-white transition">Support</Link>
-            <Link href="/contact" className="hover:text-white transition">Contact</Link>
+            <Link href="/privacy" className="hover:text-white transition">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-white transition">
+              Terms
+            </Link>
+            <Link href="/contact" className="hover:text-white transition">
+              Support
+            </Link>
+            <Link href="/contact" className="hover:text-white transition">
+              Contact
+            </Link>
           </div>
           <div>
             &copy; 2026 Smart Accident Reporting System. All rights reserved.

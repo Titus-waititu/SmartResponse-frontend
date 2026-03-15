@@ -24,39 +24,47 @@ export default function AuthLayout({
             <div className="w-10 h-10 rounded-xl bg-linear-to-tr from-brand-red to-orange-400 flex items-center justify-center shadow-lg shadow-brand-red/30">
               <Zap className="text-white w-6 h-6" />
             </div>
-            <h1 className="text-2xl font-bold tracking-tight">Smart Accident Reporting System</h1>
+            <h1 className="text-2xl font-bold tracking-tight">
+              Smart Accident Reporting System
+            </h1>
           </div>
-          
+
           <div className="relative w-full h-100 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl overflow-hidden mt-8 p-6 flex flex-col items-center justify-center perspective-1000">
-             {/* Mock map isometric view */}
-             <div className="w-full h-full border-2 border-dashed border-blue-500/30 rounded-2xl relative transform -rotate-12 scale-110 flex items-center justify-center bg-blue-500/5">
-                <div className="absolute w-2 h-full bg-blue-500/30 rotate-45" />
-                <div className="absolute h-2 w-full bg-blue-500/30 -rotate-45" />
-             </div>
-             
-             {/* Floating elements */}
-             <div className="absolute top-8 right-8 bg-slate-900/80 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-xl flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center">
-                  <ShieldCheck className="w-6 h-6" />
+            {/* Mock map isometric view */}
+            <div className="w-full h-full border-2 border-dashed border-blue-500/30 rounded-2xl relative transform -rotate-12 scale-110 flex items-center justify-center bg-blue-500/5">
+              <div className="absolute w-2 h-full bg-blue-500/30 rotate-45" />
+              <div className="absolute h-2 w-full bg-blue-500/30 -rotate-45" />
+            </div>
+
+            {/* Floating elements */}
+            <div className="absolute top-8 right-8 bg-slate-900/80 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-xl flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <div>
+                <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">
+                  AI Analyst
                 </div>
-                <div>
-                  <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">AI Analyst</div>
-                  <div className="text-sm font-medium text-white">Processing Data</div>
+                <div className="text-sm font-medium text-white">
+                  Processing Data
                 </div>
-             </div>
-             
-             <div className="absolute bottom-12 left-8 bg-slate-900/80 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-xl">
-                 <div className="text-3xl font-black text-brand-red">50</div>
-                 <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">Severity</div>
-             </div>
+              </div>
+            </div>
+
+            <div className="absolute bottom-12 left-8 bg-slate-900/80 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-xl">
+              <div className="text-3xl font-black text-brand-red">50</div>
+              <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">
+                Severity
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Right Side Glass Form */}
         <div className="flex justify-center w-full">
-           <div className="w-full max-w-md bg-white/3 border border-white/10 backdrop-blur-2xl rounded-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] p-8">
-             {children}
-           </div>
+          <div className="w-full max-w-md bg-white/3 border border-white/10 backdrop-blur-2xl rounded-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] p-8">
+            {children}
+          </div>
         </div>
       </div>
     </main>

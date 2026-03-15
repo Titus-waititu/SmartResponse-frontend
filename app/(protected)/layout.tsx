@@ -10,8 +10,8 @@ import { Topbar } from "@/components/shared/Topbar";
 
 /**
  * Guards all routes under (protected)/.
- * - Redirects to /login when the store hydrates without an authenticated user. 
- * - Silently re-fetches GET /auth/me in the background to keep the user        
+ * - Redirects to /login when the store hydrates without an authenticated user.
+ * - Silently re-fetches GET /auth/me in the background to keep the user
  *   profile fresh and detect server-side session invalidation.
  */
 export default function ProtectedLayout({
@@ -23,7 +23,7 @@ export default function ProtectedLayout({
   const isHydrated = useAuthStore((s) => s.isHydrated);
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
 
-  // Background refresh of the user profile — only runs when authenticated      
+  // Background refresh of the user profile — only runs when authenticated
   useCurrentUser();
 
   // Open WebSocket and sync events → query invalidation + toasts

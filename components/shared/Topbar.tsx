@@ -6,7 +6,6 @@ export function Topbar() {
 
   return (
     <header className="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 sticky top-0 z-40">
-      
       {/* Search / Placeholder */}
       <div className="flex-1 flex items-center">
         {/* <div className="relative w-64">
@@ -29,13 +28,17 @@ export function Topbar() {
         </button>
 
         <div className="flex items-center gap-3 border-l border-slate-200 dark:border-slate-700 pl-6 cursor-pointer">
-           <div className="text-right hidden sm:block">
-              <div className="text-sm font-semibold text-slate-900 dark:text-white">{user?.name || "User"}</div>
-              <div className="text-xs text-slate-500 dark:text-slate-400">{user?.role}</div>
-           </div>
-           <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-slate-600 dark:text-slate-300">
-             {user?.name?.charAt(0) || "U"}
-           </div>
+          <div className="text-right hidden sm:block">
+            <div className="text-sm font-semibold text-slate-900 dark:text-white">
+              {user?.name || "User"}
+            </div>
+            <div className="text-xs text-slate-500 dark:text-slate-400">
+              {user?.role}
+            </div>
+          </div>
+          <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-slate-600 dark:text-slate-300">
+            {user?.name?.charAt(0) || "U"}
+          </div>
         </div>
       </div>
     </header>
