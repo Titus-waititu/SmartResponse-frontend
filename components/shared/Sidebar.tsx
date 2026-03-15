@@ -41,7 +41,11 @@ export function Sidebar() {
         href: "/dashboard/user/nearby",
         icon: MapPin,
       },
-      { name: "Notifications", href: "/dashboard/user/notifications", icon: Bell },
+      {
+        name: "Notifications",
+        href: "/dashboard/user/notifications",
+        icon: Bell,
+      },
       { name: "Settings", href: "/dashboard/user/settings", icon: Settings },
     ];
   } else if (role === "OFFICER" || role === "RESPONDER") {
@@ -51,19 +55,51 @@ export function Sidebar() {
         href: `/dashboard/${role.toLowerCase()}`,
         icon: ClipboardList,
       },
-      { name: "Map Panel", href: `/dashboard/${role.toLowerCase()}/map`, icon: MapPin },
-      { name: "Reports", href: `/dashboard/${role.toLowerCase()}/reports`, icon: FileWarning },
-      { name: "Status", href: `/dashboard/${role.toLowerCase()}/status`, icon: BarChart3 },
-      { name: "Profile", href: `/dashboard/${role.toLowerCase()}/profile`, icon: Settings },
+      {
+        name: "Map Panel",
+        href: `/dashboard/${role.toLowerCase()}/map`,
+        icon: MapPin,
+      },
+      {
+        name: "Reports",
+        href: `/dashboard/${role.toLowerCase()}/reports`,
+        icon: FileWarning,
+      },
+      {
+        name: "Status",
+        href: `/dashboard/${role.toLowerCase()}/status`,
+        icon: BarChart3,
+      },
+      {
+        name: "Profile",
+        href: `/dashboard/${role.toLowerCase()}/profile`,
+        icon: Settings,
+      },
     ];
   } else if (role === "ADMIN") {
     links = [
       { name: "Overview", href: "/dashboard/admin", icon: LayoutDashboard },
-      { name: "Reports", href: "/dashboard/admin/reports", icon: ClipboardList },
-      { name: "AI Analytics", href: "/dashboard/admin/analytics", icon: BarChart3 },
-      { name: "Dispatch Logs", href: "/dashboard/admin/dispatch", icon: MapPin },
+      {
+        name: "Reports",
+        href: "/dashboard/admin/reports",
+        icon: ClipboardList,
+      },
+      {
+        name: "AI Analytics",
+        href: "/dashboard/admin/analytics",
+        icon: BarChart3,
+      },
+      {
+        name: "Dispatch Logs",
+        href: "/dashboard/admin/dispatch",
+        icon: MapPin,
+      },
       { name: "Users", href: "/dashboard/admin/users", icon: Users },
-      { name: "Emergency Services", href: "/dashboard/admin/services", icon: Ambulance },
+      {
+        name: "Emergency Services",
+        href: "/dashboard/admin/services",
+        icon: Ambulance,
+      },
       { name: "Settings", href: "/dashboard/admin/settings", icon: Settings },
     ];
   }
@@ -93,9 +129,9 @@ export function Sidebar() {
               key={link.name}
               href={link.href}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${
-                  isActive
-                    ? "bg-slate-200 dark:bg-slate-800 text-brand-red dark:text-white font-semibold"
-                    : "hover:bg-slate-200 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white text-slate-500 dark:text-slate-400"
+                isActive
+                  ? "bg-slate-200 dark:bg-slate-800 text-brand-red dark:text-white font-semibold"
+                  : "hover:bg-slate-200 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white text-slate-500 dark:text-slate-400"
               }`}
             >
               <Icon
@@ -119,5 +155,3 @@ export function Sidebar() {
     </aside>
   );
 }
-
-
