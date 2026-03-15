@@ -1,0 +1,84 @@
+
+> frontend@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+ΓÜá The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 3 errors:
+./components/dashboard/admin/AdminPanels.tsx:4:1
+Module not found: Can't resolve 'date-fns'
+  2 |
+  3 | import Link from "next/link";
+> 4 | import { format } from "date-fns";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   useAdminReports,
+  7 |   useAdminAnalytics,
+
+
+
+Import trace:
+  Server Component:
+    ./components/dashboard/admin/AdminPanels.tsx
+    ./app/(protected)/dashboard/admin/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./app/providers.tsx:6:1
+Module not found: Can't resolve 'next-themes'
+  4 | import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+  5 | import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+> 6 | import { ThemeProvider } from "next-themes";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { Toaster } from "@/components/ui/Toaster";
+  8 |
+  9 | function makeQueryClient() {
+
+
+
+Import trace:
+  Server Component:
+    ./app/providers.tsx
+    ./app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./components/shared/Topbar.tsx:5:1
+Module not found: Can't resolve 'next-themes'
+  3 | import { Bell, Search, Sun, Moon, Monitor } from "lucide-react";
+  4 | import { useAuthStore } from "@/lib/stores/authStore";
+> 5 | import { useTheme } from "next-themes";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export function Topbar() {
+  8 |   const user = useAuthStore((s) => s.user);
+
+
+
+Import traces:
+  Client Component Browser:
+    ./components/shared/Topbar.tsx [Client Component Browser]
+    ./app/(protected)/layout.tsx [Client Component Browser]
+    ./app/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/shared/Topbar.tsx [Client Component SSR]
+    ./app/(protected)/layout.tsx [Client Component SSR]
+    ./app/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./components/dashboard/admin/AdminPanels.tsx:4:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./app/providers.tsx:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./components/shared/Topbar.tsx:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
