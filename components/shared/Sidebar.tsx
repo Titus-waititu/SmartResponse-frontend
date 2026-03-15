@@ -28,7 +28,8 @@ export function Sidebar() {
   const role = user.role;
 
   // Define navigation links based on role
-  let links: Array<{ name: string; href: string; icon: React.ElementType }> = [];
+  let links: Array<{ name: string; href: string; icon: React.ElementType }> =
+    [];
 
   if (role === "USER") {
     links = [
