@@ -162,3 +162,6 @@ export function EmergencyQueue() {
          )}
       </section>
     </div>
+
+  );
+}

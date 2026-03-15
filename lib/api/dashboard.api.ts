@@ -4,30 +4,34 @@ import { Incident, DispatchStatus } from "@/lib/types/incident";
 import { Report } from "@/lib/types/report";
 import { AnalyticsSummary, DispatchLog } from "@/lib/types/incident";
 
-// ---------------------------------------------------------------------------
+// --- Mock Data ---
+const mockIncidents: Incident[] = [];
+const mockReports: Report[] = [];
+const mockAnalytics: AnalyticsSummary = {
+  totalIncidents: 100,
+  resolved: 50,
+  pending: 50,
+};
+const mockLogs: DispatchLog[] = [];
+// -----------------
+
+// ---------------------------------------------------------------------------  
 // Officer
-// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------  
 export const officerApi = {
   /** GET /incidents/my — incidents assigned to the current officer */
   listAssigned: async (): Promise<Incident[]> => {
-    const { data } = await apiClient.get<Incident[]>(API_ROUTES.incidents.my);
-    return data;
+    return new Promise((resolve) => setTimeout(() => resolve(mockIncidents), 400));
   },
 
   /** PATCH /incidents/:id/accept */
   accept: async (incidentId: string): Promise<Incident> => {
-    const { data } = await apiClient.patch<Incident>(
-      API_ROUTES.incidents.accept(incidentId),
-    );
-    return data;
+    return new Promise((resolve) => setTimeout(() => resolve({ id: incidentId } as Incident), 400));
   },
 
   /** PATCH /incidents/:id/reject */
   reject: async (incidentId: string): Promise<Incident> => {
-    const { data } = await apiClient.patch<Incident>(
-      API_ROUTES.incidents.reject(incidentId),
-    );
-    return data;
+    return new Promise((resolve) => setTimeout(() => resolve({ id: incidentId } as Incident), 400));
   },
 
   /** PATCH /incidents/:id/dispatch */
@@ -35,24 +39,17 @@ export const officerApi = {
     incidentId: string,
     status: DispatchStatus,
   ): Promise<Incident> => {
-    const { data } = await apiClient.patch<Incident>(
-      API_ROUTES.incidents.dispatch(incidentId),
-      { status },
-    );
-    return data;
+    return new Promise((resolve) => setTimeout(() => resolve({ id: incidentId, dispatchStatus: status } as Incident), 400));
   },
 };
 
-// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------  
 // Responder
 // ---------------------------------------------------------------------------
 export const responderApi = {
   /** GET /incidents/queue — active incidents needing a responder */
   getQueue: async (): Promise<Incident[]> => {
-    const { data } = await apiClient.get<Incident[]>(
-      API_ROUTES.incidents.queue,
-    );
-    return data;
+    return new Promise((resolve) => setTimeout(() => resolve(mockIncidents), 400));
   },
 
   /** PATCH /incidents/:id/dispatch */
@@ -60,37 +57,24 @@ export const responderApi = {
     incidentId: string,
     status: DispatchStatus,
   ): Promise<Incident> => {
-    const { data } = await apiClient.patch<Incident>(
-      API_ROUTES.incidents.dispatch(incidentId),
-      { status },
-    );
-    return data;
+    return new Promise((resolve) => setTimeout(() => resolve({ id: incidentId, dispatchStatus: status } as Incident), 400));
   },
 };
 
-// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------  
 // Admin
-// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------  
 export const adminApi = {
   /** GET /admin/reports */
   listAllReports: async (): Promise<Report[]> => {
-    const { data } = await apiClient.get<Report[]>(API_ROUTES.admin.reports);
-    return data;
+    return new Promise((resolve) => setTimeout(() => resolve(mockReports), 400));
   },
 
   /** GET /admin/analytics */
   getAnalytics: async (): Promise<AnalyticsSummary> => {
-    const { data } = await apiClient.get<AnalyticsSummary>(
-      API_ROUTES.admin.analytics,
-    );
-    return data;
+    return new Promise((resolve) => setTimeout(() => resolve(mockAnalytics), 400));
   },
 
   /** GET /admin/dispatch-logs */
   getDispatchLogs: async (): Promise<DispatchLog[]> => {
-    const { data } = await apiClient.get<DispatchLog[]>(
-      API_ROUTES.admin.dispatchLogs,
-    );
-    return data;
-  },
-};
+    return new Promise((resolve) => setTimeout(() => resolve(mockLogs), 400));

@@ -43,3 +43,7 @@ export function DispatchStatusBadge({ status }: { status: DispatchStatus }) {
   const { label, className } = DISPATCH_STATUS_META[status];
   return (
     <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center justify-center whitespace-nowrap ${className}`} aria-label={`Dispatch status: ${label}`}>       
+      {label}
+    </span>
+  );
+}

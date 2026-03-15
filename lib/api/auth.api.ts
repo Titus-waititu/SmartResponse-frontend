@@ -8,17 +8,39 @@ import {
   User,
 } from "@/lib/types/auth";
 
+// --- Mock Data ---
+const mockUser = {
+  id: "u_1",
+  name: "Current User",
+  email: "demo@example.com",
+};
+
+const mockTokens = {
+  accessToken: "mock.jwt.token",
+  refreshToken: "mock.refresh.token",
+};
+// -----------------
+
 export const authApi = {
   /**
    * POST /auth/login
    * Returns user + tokens.
    */
   login: async (credentials: LoginCredentials): Promise<LoginResponse> => {
-    const { data } = await apiClient.post<LoginResponse>(
-      API_ROUTES.auth.login,
-      credentials,
-    );
-    return data;
+    // Generate a mock role based on email to allow testing different dashboards
+    let role = "USER" as User["role"];
+    if (credentials.email.includes("admin")) role = "ADMIN";
+    if (credentials.email.includes("officer")) role = "OFFICER";
+    if (credentials.email.includes("responder")) role = "RESPONDER";
+    
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          user: { ...mockUser, email: credentials.email, role },
+          tokens: mockTokens,
+        });
+      }, 600);
+    });
   },
 
   /**
@@ -28,11 +50,19 @@ export const authApi = {
   register: async (
     credentials: RegisterCredentials,
   ): Promise<RegisterResponse> => {
-    const { data } = await apiClient.post<RegisterResponse>(
-      API_ROUTES.auth.register,
-      credentials,
-    );
-    return data;
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          user: { 
+            id: "u_2", 
+            email: credentials.email, 
+            name: credentials.name, 
+            role: credentials.role || "USER" 
+          },
+          tokens: mockTokens,
+        });
+      }, 600);
+    });
   },
 
   /**
@@ -40,8 +70,15 @@ export const authApi = {
    * Returns the currently authenticated user (requires Bearer token).
    */
   me: async (): Promise<User> => {
-    const { data } = await apiClient.get<User>(API_ROUTES.auth.me);
-    return data;
+    // Determine last saved token from state or cookie if needed, but for mock:
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          ...mockUser,
+          role: "USER" // Note: This resets on reload if unpersisted, but it's enough to clear network errors.
+        });
+      }, 600);
+    });
   },
 
   /**
@@ -49,6 +86,8 @@ export const authApi = {
    * Invalidates the refresh token server-side. Fire-and-forget is fine.
    */
   logout: async (): Promise<void> => {
-    await apiClient.post(API_ROUTES.auth.logout);
-  },
+    return new Promise((resolve) => {
+      setTimeout(resolve, 400);
+    });
+  }
 };

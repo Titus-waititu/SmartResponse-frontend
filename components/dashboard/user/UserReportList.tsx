@@ -31,7 +31,7 @@ export function UserReportList() {
           <FileImage className="w-8 h-8 text-slate-400" />
         </div>
         <h3 className="text-lg font-semibold mb-2">No Reports Yet</h3>
-        <p className="text-slate-500 mb-6 max-w-sm mx-auto">You haven't submitted any accident reports yet. When you do, they will appear here.</p>
+        <p className="text-slate-500 mb-6 max-w-sm mx-auto">You haven&apos;t submitted any accident reports yet. When you do, they will appear here.</p>
         <Link href="/reports/create" className="text-brand-red font-medium hover:underline inline-flex items-center gap-1">
           Create your first report <ChevronRight className="w-4 h-4" />
         </Link>
@@ -72,3 +72,6 @@ export function UserReportList() {
         </div>
       ))}
     </div>
+
+  );
+}

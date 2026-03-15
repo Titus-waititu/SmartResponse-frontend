@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { type ReactNode } from "react";
 import { useAuthStore } from "@/lib/stores/authStore";
 import { useAuth } from "@/lib/hooks/useAuth";
 import {
@@ -26,7 +27,7 @@ export function Sidebar() {
   const role = user.role;
 
   // Define navigation links based on role
-  let links: Array<{ name: string; href: string; icon: any }> = [];
+  let links: Array<{ name: string; href: string; icon: React.ElementType }> = [];
 
   if (role === "USER") {
     links = [

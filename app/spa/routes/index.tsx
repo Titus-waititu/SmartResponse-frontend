@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export function SpaIndexRoute() {
   return (
     <div className="space-y-4">
@@ -11,9 +13,9 @@ export function SpaIndexRoute() {
       </p>
       <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm dark:border-zinc-800 dark:bg-zinc-900/30">
         Tip: go back to the Next home page at{" "}
-        <a href="/" className="font-medium underline">
+        <Link href="/" className="font-medium underline">
           /
-        </a>
+        </Link>
         .
       </div>
     </div>

@@ -205,3 +205,6 @@ export function DispatchLogsTable() {
         </ul>
       </div>
     </div>
+
+  );
+}

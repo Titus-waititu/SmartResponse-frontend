@@ -220,3 +220,6 @@ export default function RegisterPage() {
           Already have an account? <Link href="/login" className="text-white hover:underline font-semibold ml-1">Login</Link>
         </p>
       </div>
+    </div>
+  );
+}

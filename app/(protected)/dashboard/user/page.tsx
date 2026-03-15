@@ -2,7 +2,7 @@ import { RoleDashboardGuard } from "@/components/auth/RoleDashboardGuard";
 import { UserReportList } from "@/components/dashboard/user/UserReportList";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { FileWarning, Clock, Activity, ShieldAlert } from "lucide-react";
+import { FileWarning, Activity, Ambulance } from "lucide-react";
 
 export const metadata: Metadata = { title: "User Dashboard" };
 
