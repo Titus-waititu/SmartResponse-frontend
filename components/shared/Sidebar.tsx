@@ -30,7 +30,8 @@ export function Sidebar() {
   const role = user.role;
 
   // Define navigation links based on role
-  let links: Array<{ name: string; href: string; icon: React.ElementType }> = [];
+  let links: Array<{ name: string; href: string; icon: React.ElementType }> =
+    [];
   if (role === "USER") {
     links = [
       { name: "Dashboard", href: "/dashboard/user", icon: LayoutDashboard },
@@ -86,20 +87,22 @@ export function Sidebar() {
               link.href !== "#" &&
               link.href !== `/dashboard/${role.toLowerCase()}`);
           const Icon = link.icon;
-          
+
           if (link.href === "#") {
             return (
               <button
                 key={link.name}
-                onClick={() => addToast("This feature is currently in development.", "info")}
-                  className="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:bg-slate-200 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white text-slate-500 dark:text-slate-400"
-                >
-                  <Icon className="w-5 h-5 text-slate-500 dark:text-slate-400" />
+                onClick={() =>
+                  addToast("This feature is currently in development.", "info")
+                }
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-colors hover:bg-slate-200 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-white text-slate-500 dark:text-slate-400"
+              >
+                <Icon className="w-5 h-5 text-slate-500 dark:text-slate-400" />
                 {link.name}
               </button>
             );
           }
-          
+
           return (
             <Link
               key={link.name}
