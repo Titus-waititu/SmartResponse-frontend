@@ -22,6 +22,7 @@ export function SpaFormRoute() {
       vehiclePlate: "",
       notes: "",
     } satisfies FormValues,
+    validatorAdapter: zodValidator(),
     validators: {
       onChange: schema,
     },
