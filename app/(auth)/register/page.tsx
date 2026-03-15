@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useForm } from "@tanstack/react-form";
+import { useForm } from '@tanstack/react-form';
+import { zodValidator } from '@tanstack/zod-form-adapter';
 import { useAuth } from "@/lib/hooks/useAuth";
 import {
   registerSchema,
@@ -23,6 +24,7 @@ export default function RegisterPage() {
       confirmPassword: "",
       role: "USER" as UserRole,
     },
+    validatorAdapter: zodValidator(),
     validators: {
       onChange: registerSchema,
     },
@@ -83,7 +85,7 @@ export default function RegisterPage() {
                 />
               </div>
               {field.state.meta.errors.length > 0 && (
-                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{String(field.state.meta.errors[0])}</p>        
+                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{field.state.meta.errors.join(", ")}</p>        
               )}
             </div>
           )}
@@ -110,7 +112,7 @@ export default function RegisterPage() {
                 />
               </div>
               {field.state.meta.errors.length > 0 && (
-                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{String(field.state.meta.errors[0])}</p>        
+                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{field.state.meta.errors.join(", ")}</p>        
               )}
             </div>
           )}
@@ -136,7 +138,7 @@ export default function RegisterPage() {
                 ))}
               </select>
               {field.state.meta.errors.length > 0 && (
-                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{String(field.state.meta.errors[0])}</p>        
+                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{field.state.meta.errors.join(", ")}</p>        
               )}
             </div>
           )}
@@ -163,7 +165,7 @@ export default function RegisterPage() {
                 />
               </div>
               {field.state.meta.errors.length > 0 && (
-                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{String(field.state.meta.errors[0])}</p>        
+                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{field.state.meta.errors.join(", ")}</p>        
               )}
             </div>
           )}
@@ -190,7 +192,7 @@ export default function RegisterPage() {
                 />
               </div>
               {field.state.meta.errors.length > 0 && (
-                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{String(field.state.meta.errors[0])}</p>        
+                <p className="text-red-400 text-sm mt-1 ml-2" role="alert">{field.state.meta.errors.join(", ")}</p>        
               )}
             </div>
           )}

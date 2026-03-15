@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useForm } from "@tanstack/react-form";
+import { zodValidator } from "@tanstack/zod-form-adapter";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { loginSchema } from "@/lib/validation/auth.schema";
 import { AxiosError } from "axios";
@@ -15,6 +16,7 @@ export default function LoginPage() {
       email: "",
       password: "",
     },
+    validatorAdapter: zodValidator(),
     validators: {
       onChange: loginSchema,
     },
@@ -84,7 +86,7 @@ export default function LoginPage() {
               </div>
               {field.state.meta.errors.length > 0 && (
                 <p className="text-red-400 text-sm mt-2 ml-2" role="alert">
-                  {String(field.state.meta.errors[0])}
+                  {field.state.meta.errors.join(", ")}
                 </p>
               )}
             </div>
@@ -113,7 +115,7 @@ export default function LoginPage() {
               </div>
               {field.state.meta.errors.length > 0 && (
                 <p className="text-red-400 text-sm mt-2 ml-2" role="alert">
-                  {String(field.state.meta.errors[0])}
+                  {field.state.meta.errors.join(", ")}
                 </p>
               )}
             </div>

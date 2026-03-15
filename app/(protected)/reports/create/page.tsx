@@ -1,7 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useForm } from "@tanstack/react-form";
+import { useForm } from '@tanstack/react-form';
+import { zodValidator } from '@tanstack/zod-form-adapter';
 import { AxiosError } from "axios";
 import {
   createReportSchema,
@@ -16,7 +17,7 @@ function FieldError({ errors }: { errors: unknown[] }) {
   if (!errors.length) return null;
   return (
     <p role="alert" aria-live="polite">
-      {String(errors[0])}
+      {errors.join(", ")}
     </p>
   );
 }
@@ -35,14 +36,9 @@ export default function CreateReportPage() {
       longitude: 0 as number,
       image: undefined as File | undefined,
     },
+    validatorAdapter: zodValidator(),
     validators: {
-      onChange: ({ value }) => {
-        const result = createReportSchema.safeParse(value);
-        if (!result.success) {
-          return result.error.errors.map((e) => e.message).join(", ");
-        }
-        return undefined;
-      },
+      onChange: createReportSchema,
     },
     onSubmit: async ({ value }) => {
       const report = await mutation.mutateAsync({
