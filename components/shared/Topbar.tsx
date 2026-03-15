@@ -29,12 +29,26 @@ export function Topbar() {
 
       <div className="flex items-center gap-6">
         {mounted && (
-          <button 
-            onClick={() => setTheme(theme === "dark" ? "light" : theme === "light" ? "system" : "dark")}
+          <button
+            onClick={() =>
+              setTheme(
+                theme === "dark"
+                  ? "light"
+                  : theme === "light"
+                    ? "system"
+                    : "dark",
+              )
+            }
             className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition"
             title={`Current theme: ${theme}. Click to switch.`}
           >
-            {theme === "dark" ? <Moon className="w-5 h-5" /> : theme === "light" ? <Sun className="w-5 h-5" /> : <Monitor className="w-5 h-5" />}
+            {theme === "dark" ? (
+              <Moon className="w-5 h-5" />
+            ) : theme === "light" ? (
+              <Sun className="w-5 h-5" />
+            ) : (
+              <Monitor className="w-5 h-5" />
+            )}
           </button>
         )}
         <button className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition relative">
@@ -59,4 +73,3 @@ export function Topbar() {
     </header>
   );
 }
-

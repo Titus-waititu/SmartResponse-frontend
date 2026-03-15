@@ -15,23 +15,29 @@ const mockAnalytics: AnalyticsSummary = {
 const mockLogs: DispatchLog[] = [];
 // -----------------
 
-// ---------------------------------------------------------------------------  
+// ---------------------------------------------------------------------------
 // Officer
-// ---------------------------------------------------------------------------  
+// ---------------------------------------------------------------------------
 export const officerApi = {
   /** GET /incidents/my — incidents assigned to the current officer */
   listAssigned: async (): Promise<Incident[]> => {
-    return new Promise((resolve) => setTimeout(() => resolve(mockIncidents), 400));
+    return new Promise((resolve) =>
+      setTimeout(() => resolve(mockIncidents), 400),
+    );
   },
 
   /** PATCH /incidents/:id/accept */
   accept: async (incidentId: string): Promise<Incident> => {
-    return new Promise((resolve) => setTimeout(() => resolve({ id: incidentId } as Incident), 400));
+    return new Promise((resolve) =>
+      setTimeout(() => resolve({ id: incidentId } as Incident), 400),
+    );
   },
 
   /** PATCH /incidents/:id/reject */
   reject: async (incidentId: string): Promise<Incident> => {
-    return new Promise((resolve) => setTimeout(() => resolve({ id: incidentId } as Incident), 400));
+    return new Promise((resolve) =>
+      setTimeout(() => resolve({ id: incidentId } as Incident), 400),
+    );
   },
 
   /** PATCH /incidents/:id/dispatch */
@@ -39,17 +45,24 @@ export const officerApi = {
     incidentId: string,
     status: DispatchStatus,
   ): Promise<Incident> => {
-    return new Promise((resolve) => setTimeout(() => resolve({ id: incidentId, dispatchStatus: status } as Incident), 400));
+    return new Promise((resolve) =>
+      setTimeout(
+        () => resolve({ id: incidentId, dispatchStatus: status } as Incident),
+        400,
+      ),
+    );
   },
 };
 
-// ---------------------------------------------------------------------------  
+// ---------------------------------------------------------------------------
 // Responder
 // ---------------------------------------------------------------------------
 export const responderApi = {
   /** GET /incidents/queue — active incidents needing a responder */
   getQueue: async (): Promise<Incident[]> => {
-    return new Promise((resolve) => setTimeout(() => resolve(mockIncidents), 400));
+    return new Promise((resolve) =>
+      setTimeout(() => resolve(mockIncidents), 400),
+    );
   },
 
   /** PATCH /incidents/:id/dispatch */
@@ -57,22 +70,31 @@ export const responderApi = {
     incidentId: string,
     status: DispatchStatus,
   ): Promise<Incident> => {
-    return new Promise((resolve) => setTimeout(() => resolve({ id: incidentId, dispatchStatus: status } as Incident), 400));
+    return new Promise((resolve) =>
+      setTimeout(
+        () => resolve({ id: incidentId, dispatchStatus: status } as Incident),
+        400,
+      ),
+    );
   },
 };
 
-// ---------------------------------------------------------------------------  
+// ---------------------------------------------------------------------------
 // Admin
-// ---------------------------------------------------------------------------  
+// ---------------------------------------------------------------------------
 export const adminApi = {
   /** GET /admin/reports */
   listAllReports: async (): Promise<Report[]> => {
-    return new Promise((resolve) => setTimeout(() => resolve(mockReports), 400));
+    return new Promise((resolve) =>
+      setTimeout(() => resolve(mockReports), 400),
+    );
   },
 
   /** GET /admin/analytics */
   getAnalytics: async (): Promise<AnalyticsSummary> => {
-    return new Promise((resolve) => setTimeout(() => resolve(mockAnalytics), 400));
+    return new Promise((resolve) =>
+      setTimeout(() => resolve(mockAnalytics), 400),
+    );
   },
 
   /** GET /admin/dispatch-logs */
@@ -80,4 +102,3 @@ export const adminApi = {
     return new Promise((resolve) => setTimeout(() => resolve(mockLogs), 400));
   },
 };
-
