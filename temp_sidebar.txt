@@ -3,7 +3,6 @@ import { usePathname } from "next/navigation";
 import { type ReactNode } from "react";
 import { useAuthStore } from "@/lib/stores/authStore";
 import { useAuth } from "@/lib/hooks/useAuth";
-import { useToastStore } from "@/lib/stores/toastStore";
 import {
   LayoutDashboard,
   FileWarning,
