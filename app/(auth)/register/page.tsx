@@ -29,7 +29,13 @@ export default function RegisterPage() {
       onChange: registerSchema,
     },
     onSubmit: async ({ value }) => {
-      const { confirmPassword: _, ...payload } = value;
+      const { name, confirmPassword: _, ...rest } = value;
+      // Map 'name' -> 'fullName', and auto-generate 'username' from email
+      const payload = {
+        ...rest,
+        fullName: name,
+        username: value.email.split("@")[0].toLowerCase().replace(/[^a-z0-9]/g, ""),
+      };
       await register(payload);
     },
   });

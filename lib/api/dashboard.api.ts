@@ -37,21 +37,29 @@ export const officerApi = {
   listAssigned: async (): Promise<Incident[]> => {
     const userId = useAuthStore.getState().user?.id;
     if (!userId) return [];
-    const { data } = await apiClient.get<any[]>(API_ROUTES.accidents.byOfficer(userId));
+    const { data } = await apiClient.get<any[]>(
+      API_ROUTES.accidents.byOfficer(userId),
+    );
     return (data || []).map(mapAccidentToIncident);
   },
 
   accept: async (incidentId: string): Promise<Incident> => {
-    const { data } = await apiClient.patch<any>(API_ROUTES.accidents.status(incidentId), {
-      status: "in_progress",
-    });
+    const { data } = await apiClient.patch<any>(
+      API_ROUTES.accidents.status(incidentId),
+      {
+        status: "in_progress",
+      },
+    );
     return mapAccidentToIncident(data);
   },
 
   reject: async (incidentId: string): Promise<Incident> => {
-    const { data } = await apiClient.patch<any>(API_ROUTES.accidents.status(incidentId), {
-      status: "reported", // reverted to reported
-    });
+    const { data } = await apiClient.patch<any>(
+      API_ROUTES.accidents.status(incidentId),
+      {
+        status: "reported", // reverted to reported
+      },
+    );
     return mapAccidentToIncident(data);
   },
 
@@ -60,9 +68,12 @@ export const officerApi = {
     status: DispatchStatus,
   ): Promise<Incident> => {
     // using dispatch endpoints
-    const { data } = await apiClient.patch<any>(API_ROUTES.accidents.status(incidentId), {
-      status: status.toLowerCase(),
-    });
+    const { data } = await apiClient.patch<any>(
+      API_ROUTES.accidents.status(incidentId),
+      {
+        status: status.toLowerCase(),
+      },
+    );
     return mapAccidentToIncident(data);
   },
 };
@@ -82,9 +93,12 @@ export const responderApi = {
     status: DispatchStatus,
   ): Promise<Incident> => {
     // There is no explicit patch dispatch to active? let's change accident status
-    const { data } = await apiClient.patch<any>(API_ROUTES.accidents.status(incidentId), {
-      status: status.toLowerCase(),
-    });
+    const { data } = await apiClient.patch<any>(
+      API_ROUTES.accidents.status(incidentId),
+      {
+        status: status.toLowerCase(),
+      },
+    );
     return mapAccidentToIncident(data);
   },
 };
@@ -110,7 +124,9 @@ export const adminApi = {
 
   getAnalytics: async (): Promise<AnalyticsSummary> => {
     try {
-      const { data } = await apiClient.get<any>(API_ROUTES.accidents.statistics);
+      const { data } = await apiClient.get<any>(
+        API_ROUTES.accidents.statistics,
+      );
       return {
         totalReports: data.total || 0,
         reportsByStatus: {
@@ -130,17 +146,32 @@ export const adminApi = {
         resolvedToday: data.resolvedToday || 0,
       };
     } catch {
-       return {
-          totalReports: 0, reportsByStatus: { PENDING: 0, UNDER_REVIEW: 0, RESOLVED: 0, REJECTED: 0 },
-          totalIncidents: 0, incidentsByDispatchStatus: { DISPATCHED: 0, EN_ROUTE: 0, ON_SCENE: 0, COMPLETED: 0 },
-          reportsToday: 0, resolvedToday: 0,
-       };
+      return {
+        totalReports: 0,
+        reportsByStatus: {
+          PENDING: 0,
+          UNDER_REVIEW: 0,
+          RESOLVED: 0,
+          REJECTED: 0,
+        },
+        totalIncidents: 0,
+        incidentsByDispatchStatus: {
+          DISPATCHED: 0,
+          EN_ROUTE: 0,
+          ON_SCENE: 0,
+          COMPLETED: 0,
+        },
+        reportsToday: 0,
+        resolvedToday: 0,
+      };
     }
   },
 
   getDispatchLogs: async (): Promise<DispatchLog[]> => {
     try {
-      const { data } = await apiClient.get<any[]>(API_ROUTES.dispatch.statistics);
+      const { data } = await apiClient.get<any[]>(
+        API_ROUTES.dispatch.statistics,
+      );
       return (data || []).map((d: any) => ({
         id: d.id || d._id || Math.random().toString(),
         incidentId: d.accidentId || "unknown",

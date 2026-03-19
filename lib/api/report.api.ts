@@ -15,7 +15,10 @@ export const reportApi = {
           headers: { "Content-Type": "multipart/form-data" },
         });
         // assumption based on typical file upload responses
-        fileUrl = uploadRes.data?.public_id || uploadRes.data?.url || uploadRes.data?.fileUrl;
+        fileUrl =
+          uploadRes.data?.public_id ||
+          uploadRes.data?.url ||
+          uploadRes.data?.fileUrl;
       } catch (e) {
         console.error("Image upload failed", e);
       }
@@ -29,7 +32,7 @@ export const reportApi = {
       latitude: payload.latitude,
       longitude: payload.longitude,
     });
-    
+
     const accidentId = accidentRes.data.id || accidentRes.data._id;
 
     // 3. Link media if we have it
@@ -51,7 +54,7 @@ export const reportApi = {
     }
 
     const createdData = accidentRes.data;
-    
+
     return {
       id: createdData.id || createdData._id || "temp-id",
       description: createdData.description || payload.description,
@@ -64,7 +67,7 @@ export const reportApi = {
       author: {
         id: "me",
         name: "Current User",
-        email: "me@example.com"
+        email: "me@example.com",
       },
     };
   },
