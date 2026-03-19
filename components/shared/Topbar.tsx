@@ -31,7 +31,9 @@ export function Topbar() {
       <div className="flex items-center gap-6">
         {mounted && (
           <button
-            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+            onClick={() =>
+              setTheme(resolvedTheme === "dark" ? "light" : "dark")
+            }
             className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition"
             title={`Current theme: ${theme}. Click to switch.`}
           >

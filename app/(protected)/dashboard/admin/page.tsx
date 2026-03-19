@@ -79,7 +79,9 @@ export default function AdminDashboardPage() {
 
         {/* User Management Mocking */}
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-slate-800 dark:text-white shadow-xl">
-          <h2 className="text-lg font-bold mb-6 text-slate-900 dark:text-white">User Management</h2>
+          <h2 className="text-lg font-bold mb-6 text-slate-900 dark:text-white">
+            User Management
+          </h2>
           <div className="overflow-x-auto custom-scrollbar">
             <table className="w-full text-left border-collapse min-w-150">
               <thead>
