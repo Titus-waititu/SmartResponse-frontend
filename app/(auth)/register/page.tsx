@@ -34,7 +34,10 @@ export default function RegisterPage() {
       const payload = {
         ...rest,
         fullName: name,
-        username: value.email.split("@")[0].toLowerCase().replace(/[^a-z0-9]/g, ""),
+        username: value.email
+          .split("@")[0]
+          .toLowerCase()
+          .replace(/[^a-z0-9]/g, ""),
       };
       await register(payload);
     },
@@ -272,4 +275,3 @@ export default function RegisterPage() {
     </div>
   );
 }
-
