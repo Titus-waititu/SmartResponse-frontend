@@ -82,4 +82,5 @@ export const reportApi = {
       updatedAt: data.updatedAt || new Date().toISOString(),
       author: { id: "u_1", name: "User", email: "user@example.com" },
     };
+  },
 };
