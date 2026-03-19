@@ -31,7 +31,8 @@ export function useAuth() {
   // ---------------------------------------------------------------------------
   const login = async (credentials: LoginCredentials): Promise<void> => {
     const data = await loginMutation.mutateAsync(credentials);
-    router.push(getDashboardPath(data.user.role));
+    const role = (data.user.role?.toLowerCase() as any) || "user";
+    router.push(getDashboardPath(role) ?? "/dashboard/user");
   };
 
   // ---------------------------------------------------------------------------
@@ -39,7 +40,8 @@ export function useAuth() {
   // ---------------------------------------------------------------------------
   const register = async (credentials: RegisterCredentials): Promise<void> => {
     const data = await registerMutation.mutateAsync(credentials);
-    router.push(getDashboardPath(data.user.role));
+    const role = (data.user.role?.toLowerCase() as any) || "user";
+    router.push(getDashboardPath(role) ?? "/dashboard/user");
   };
 
   // ---------------------------------------------------------------------------

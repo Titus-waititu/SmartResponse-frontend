@@ -61,8 +61,11 @@ export const useAuthStore = create<AuthState>()(
         isAuthenticated: state.isAuthenticated,
       }),
       onRehydrateStorage: () => (state) => {
-        // Re-sync the role cookie from persisted state on page load
+        // Normalize role to lowercase for backwards compatibility with old caches
         if (state?.user) {
+          if (state.user.role) {
+            state.user.role = state.user.role.toLowerCase() as any;
+          }
           tokenStorage.setRoleCookie(state.user.role);
         }
         state?.setHydrated();

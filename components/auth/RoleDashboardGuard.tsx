@@ -36,15 +36,17 @@ export function RoleDashboardGuard({
     }
 
     const allowed: UserRole[] = DASHBOARD_ALLOWED_ROLES[dashboardPath] ?? [];
-    if (!allowed.includes(user.role)) {
-      router.replace(getDashboardPath(user.role));
+    const normalizedRole = user.role?.toLowerCase() as UserRole;
+    if (!allowed.includes(normalizedRole)) {
+      router.replace(getDashboardPath(normalizedRole) || "/login");
     }
   }, [isHydrated, user, dashboardPath, router]);
 
   if (!isHydrated || !user) return null;
 
   const allowed: UserRole[] = DASHBOARD_ALLOWED_ROLES[dashboardPath] ?? [];
-  if (!allowed.includes(user.role)) return null;
+  const normalizedRole = user.role?.toLowerCase() as UserRole;
+  if (!allowed.includes(normalizedRole)) return null;
 
   return <>{children}</>;
 }

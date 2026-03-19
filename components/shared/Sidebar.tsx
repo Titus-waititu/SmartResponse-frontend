@@ -27,7 +27,9 @@ export function Sidebar() {
 
   if (!user) return null;
 
-  const role = user.role;
+  // Ensure role is lowercase to match the new type definitions
+  // in case the user has an old uppercase role in their local storage
+  const role = user.role?.toLowerCase() || "user";
 
   // Define navigation links based on role
   let links: Array<{ name: string; href: string; icon: React.ElementType }> =
@@ -105,7 +107,7 @@ export function Sidebar() {
   }
 
   return (
-    <aside className="w-64 bg-slate-50 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 flex flex-col h-screen fixed top-0 left-0 overflow-y-auto">
+    <aside className="w-64 bg-slate-50 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 flex flex-col h-screen fixed top-0 left-0 overflow-y-auto z-50">
       <div className="p-6 flex items-center gap-3">
         <div className="w-8 h-8 rounded bg-linear-to-tr from-brand-red to-orange-400 flex items-center justify-center">
           <Zap className="text-white w-5 h-5" />
