@@ -9,7 +9,7 @@ import { UserRole } from "@/lib/types/auth";
 
 /**
  * /dashboard – immediately redirects to the role-specific sub-route.
- * The middleware handles this for most cases; this is a client-side fallback.  
+ * The middleware handles this for most cases; this is a client-side fallback.
  */
 export default function DashboardIndexPage() {
   const router = useRouter();
