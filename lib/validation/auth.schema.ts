@@ -32,8 +32,8 @@ export const registerSchema = z
       .regex(/[A-Z]/, "Must contain at least one uppercase letter")
       .regex(/[0-9]/, "Must contain at least one number"),
     confirmPassword: z.string().min(1, "Please confirm your password"),
-    // Role is always present on the form (defaultValue: "USER")
-    role: z.enum(["USER", "OFFICER", "RESPONDER", "ADMIN"] as const),
+    // Role is always present on the form (defaultValue: "user")
+    role: z.enum(["user", "officer", "emergency_responder", "admin"] as const),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",

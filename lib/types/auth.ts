@@ -1,10 +1,14 @@
-export type UserRole = "USER" | "OFFICER" | "RESPONDER" | "ADMIN";
+export type UserRole = "user" | "officer" | "emergency_responder" | "admin";
 
 export interface User {
-  id: string;
+  id: string; // Wait, actually the ID in backend might be a string (UUID)
   email: string;
-  name: string;
+  fullName: string;
+  username: string;
+  phoneNumber?: string;
   role: UserRole;
+  isActive: boolean;
+  name?: string; // fallback if components use name
 }
 
 export interface AuthTokens {
@@ -18,10 +22,13 @@ export interface LoginCredentials {
 }
 
 export interface RegisterCredentials {
-  name: string;
+  fullName: string;
   email: string;
+  username: string;
   password: string;
+  phoneNumber?: string;
   role?: UserRole;
+  isActive?: boolean;
 }
 
 export interface LoginResponse {

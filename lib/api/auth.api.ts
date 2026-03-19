@@ -8,86 +8,63 @@ import {
   User,
 } from "@/lib/types/auth";
 
-// --- Mock Data ---
-const mockUser = {
-  id: "u_1",
-  name: "Current User",
-  email: "demo@example.com",
-};
-
-const mockTokens = {
-  accessToken: "mock.jwt.token",
-  refreshToken: "mock.refresh.token",
-};
-// -----------------
-
 export const authApi = {
-  /**
-   * POST /auth/login
-   * Returns user + tokens.
-   */
   login: async (credentials: LoginCredentials): Promise<LoginResponse> => {
-    // Generate a mock role based on email to allow testing different dashboards
-    let role = "USER" as User["role"];
-    if (credentials.email.includes("admin")) role = "ADMIN";
-    if (credentials.email.includes("officer")) role = "OFFICER";
-    if (credentials.email.includes("responder")) role = "RESPONDER";
-
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          user: { ...mockUser, email: credentials.email, role },
-          tokens: mockTokens,
-        });
-      }, 600);
-    });
+    const { data } = await apiClient.post<LoginResponse>(
+      API_ROUTES.auth.signin,
+      credentials,
+    );
+    return data;
   },
 
-  /**
-   * POST /auth/register
-   * Creates a new account and returns user + tokens (auto-login).
-   */
   register: async (
     credentials: RegisterCredentials,
   ): Promise<RegisterResponse> => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          user: {
-            id: "u_2",
-            email: credentials.email,
-            name: credentials.name,
-            role: credentials.role || "USER",
-          },
-          tokens: mockTokens,
-        });
-      }, 600);
-    });
+    // Map the expected payload
+    const payload = {
+      fullName: credentials.fullName || (credentials as any).name || "User",
+      email: credentials.email,
+      username: credentials.email.split("@")[0], // Fallback username
+      password: credentials.password,
+      role: credentials.role || "user",
+      isActive: true,
+    };
+
+    // The endpoint is actually creating a user
+    const { data } = await apiClient.post<any>(
+      API_ROUTES.auth.register,
+      payload,
+    );
+
+    // The register endpoint might just return the user, not tokens if we follow the REST principles for /users creation.
+    // Assuming backend returns user + tokens or we login right after.
+    // If backend returns just user without token:
+    if (data && (!data.tokens || !data.accessToken)) {
+      // We might need to call login immediately
+      const loginResp = await authApi.login({
+        email: payload.email,
+        password: payload.password,
+      });
+      return loginResp;
+    }
+
+    return data;
   },
 
-  /**
-   * GET /auth/me
-   * Returns the currently authenticated user (requires Bearer token).
-   */
   me: async (): Promise<User> => {
-    // Determine last saved token from state or cookie if needed, but for mock:
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          ...mockUser,
-          role: "USER", // Note: This resets on reload if unpersisted, but it's enough to clear network errors.
-        });
-      }, 600);
-    });
+    const { data } = await apiClient.get<User>(API_ROUTES.auth.profile);
+    // map fullName to name if necessary for existing components
+    if (data && data.fullName) {
+      data.name = data.fullName;
+    }
+    return data;
   },
 
-  /**
-   * POST /auth/logout
-   * Invalidates the refresh token server-side. Fire-and-forget is fine.
-   */
   logout: async (): Promise<void> => {
-    return new Promise((resolve) => {
-      setTimeout(resolve, 400);
-    });
+    try {
+      await apiClient.post(API_ROUTES.auth.logout);
+    } catch {
+      // Ignore failure on logout
+    }
   },
 };

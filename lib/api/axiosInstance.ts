@@ -1,6 +1,7 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3001";
+const BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000/api/v1";
 
 // ---------------------------------------------------------------------------
 // Storage helpers (safe for SSR)
@@ -130,10 +131,13 @@ apiClient.interceptors.response.use(
     isRefreshing = true;
 
     try {
-      const { data } = await axios.post<{ accessToken: string }>(
+      const { data } = await axios.post(
         `${BASE_URL}/auth/refresh`,
-        { refreshToken },
+        {},
+        { headers: { Authorization: `Bearer ${refreshToken}` } },
       );
+      // Determine what the server responds with, here assuming it returns { accessToken }
+      // If it also returns a new refresh token we could update it too. We'll stick to accessToken.
       const newAccessToken = data.accessToken;
       tokenStorage.setTokens(newAccessToken, refreshToken);
       processQueue(null, newAccessToken);

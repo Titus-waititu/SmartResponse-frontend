@@ -32,7 +32,7 @@ export function Sidebar() {
   // Define navigation links based on role
   let links: Array<{ name: string; href: string; icon: React.ElementType }> =
     [];
-  if (role === "USER") {
+  if (role === "user") {
     links = [
       { name: "Dashboard", href: "/dashboard/user", icon: LayoutDashboard },
       { name: "Report Accident", href: "/reports/create", icon: FileWarning },
@@ -48,7 +48,7 @@ export function Sidebar() {
       },
       { name: "Settings", href: "/dashboard/user/settings", icon: Settings },
     ];
-  } else if (role === "OFFICER" || role === "RESPONDER") {
+  } else if (role === "officer" || role === "emergency_responder") {
     links = [
       {
         name: "Assigned Incidents",
@@ -76,7 +76,7 @@ export function Sidebar() {
         icon: Settings,
       },
     ];
-  } else if (role === "ADMIN") {
+  } else if (role === "admin") {
     links = [
       { name: "Overview", href: "/dashboard/admin", icon: LayoutDashboard },
       {
@@ -155,3 +155,4 @@ export function Sidebar() {
     </aside>
   );
 }
+

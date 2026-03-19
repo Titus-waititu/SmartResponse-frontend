@@ -22,7 +22,7 @@ export default function RegisterPage() {
       email: "",
       password: "",
       confirmPassword: "",
-      role: "USER" as UserRole,
+      role: "user" as UserRole,
     },
 
     validators: {
@@ -144,7 +144,7 @@ export default function RegisterPage() {
               <select
                 id={field.name}
                 name={field.name}
-                value={field.state.value ?? "USER"}
+                value={field.state.value ?? "user"}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(e.target.value as UserRole)}
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent transition text-white appearance-none cursor-pointer"
@@ -266,3 +266,4 @@ export default function RegisterPage() {
     </div>
   );
 }
+
