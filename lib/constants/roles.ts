@@ -20,6 +20,8 @@ export const DASHBOARD_ALLOWED_ROLES: Record<string, UserRole[]> = {
   "/dashboard/officer": ["officer", "admin"],
   "/dashboard/responder": ["emergency_responder", "admin"],
   "/dashboard/admin": ["admin"],
+};
+
 export function getDashboardPath(role: UserRole): string {
   return ROLE_DASHBOARD[role];
 }
