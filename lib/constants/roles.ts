@@ -1,7 +1,12 @@
 import { UserRole } from "@/lib/types/auth";
 
 /** Ordered list of all roles */
-export const ALL_ROLES: UserRole[] = ["user", "officer", "emergency_responder", "admin"];
+export const ALL_ROLES: UserRole[] = [
+  "user",
+  "officer",
+  "emergency_responder",
+  "admin",
+];
 
 /** Maps a role to its dashboard path segment */
 export const ROLE_DASHBOARD: Record<UserRole, string> = {
