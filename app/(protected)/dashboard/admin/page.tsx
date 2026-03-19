@@ -17,8 +17,8 @@ export default function AdminDashboardPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Mocking the AI Performance Chart UI from the design */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-white shadow-xl relative overflow-hidden">
-            <h2 className="text-lg font-bold mb-6 text-slate-100">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-slate-800 dark:text-white shadow-xl relative overflow-hidden">
+            <h2 className="text-lg font-bold mb-6 text-slate-900 dark:text-slate-100">
               AI Performance Metrics
             </h2>
 
@@ -72,18 +72,18 @@ export default function AdminDashboardPage() {
           </div>
 
           {/* Dispatch Logs Box */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-white shadow-xl">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-slate-800 dark:text-white shadow-xl">
             <DispatchLogsTable />
           </div>
         </div>
 
         {/* User Management Mocking */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-white shadow-xl">
-          <h2 className="text-lg font-bold mb-6">User Management</h2>
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-slate-800 dark:text-white shadow-xl">
+          <h2 className="text-lg font-bold mb-6 text-slate-900 dark:text-white">User Management</h2>
           <div className="overflow-x-auto custom-scrollbar">
             <table className="w-full text-left border-collapse min-w-150">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
+                <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider">
                   <th className="pb-3 px-2 font-medium">Name</th>
                   <th className="pb-3 px-2 font-medium">Email</th>
                   <th className="pb-3 px-2 font-medium">Role</th>

@@ -21,6 +21,10 @@
   --card-foreground: #1e2a3a;
 }
 
+html {
+  font-size: 87.5%; /* Reduces the 1rem base from 16px to 14px, scaling down all rem-based units */
+}
+
 .dark {
   --background: #111827;
   --foreground: #f3f4f6;

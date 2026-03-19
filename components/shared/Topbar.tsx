@@ -1,12 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Bell, Search, Sun, Moon, Monitor } from "lucide-react";
+import { Bell, Search, Sun, Moon } from "lucide-react";
 import { useAuthStore } from "@/lib/stores/authStore";
 import { useTheme } from "next-themes";
 
 export function Topbar() {
   const user = useAuthStore((s) => s.user);
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -31,24 +31,14 @@ export function Topbar() {
       <div className="flex items-center gap-6">
         {mounted && (
           <button
-            onClick={() =>
-              setTheme(
-                theme === "dark"
-                  ? "light"
-                  : theme === "light"
-                    ? "system"
-                    : "dark",
-              )
-            }
+            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
             className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition"
             title={`Current theme: ${theme}. Click to switch.`}
           >
-            {theme === "dark" ? (
+            {resolvedTheme === "dark" ? (
               <Moon className="w-5 h-5" />
-            ) : theme === "light" ? (
-              <Sun className="w-5 h-5" />
             ) : (
-              <Monitor className="w-5 h-5" />
+              <Sun className="w-5 h-5" />
             )}
           </button>
         )}

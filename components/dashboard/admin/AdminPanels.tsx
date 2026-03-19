@@ -32,7 +32,7 @@ export function AnalyticsSummaryPanel() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-white shadow-xl flex items-center gap-4">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-slate-800 dark:text-white shadow-xl flex items-center gap-4">
         <div className="w-12 h-12 bg-blue-500/20 text-blue-400 flex items-center justify-center rounded-xl shrink-0">
            <TrendingUp className="w-6 h-6" />
         </div>
@@ -43,7 +43,7 @@ export function AnalyticsSummaryPanel() {
         </div>
       </div>
       
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-white shadow-xl flex items-center gap-4">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-slate-800 dark:text-white shadow-xl flex items-center gap-4">
         <div className="w-12 h-12 bg-emerald-500/20 text-emerald-500 flex items-center justify-center rounded-xl shrink-0">
            <AlertTriangle className="w-6 h-6" />
         </div>
@@ -54,7 +54,7 @@ export function AnalyticsSummaryPanel() {
         </div>
       </div>
       
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-white shadow-xl flex items-center gap-4">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-slate-800 dark:text-white shadow-xl flex items-center gap-4">
         <div className="w-12 h-12 bg-amber-500/20 text-amber-500 flex items-center justify-center rounded-xl shrink-0">
            <Activity className="w-6 h-6" />
         </div>
@@ -64,7 +64,7 @@ export function AnalyticsSummaryPanel() {
         </div>
       </div>
       
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-white shadow-xl flex items-center gap-4">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-slate-800 dark:text-white shadow-xl flex items-center gap-4">
         <div className="w-12 h-12 bg-brand-red/20 text-brand-red flex items-center justify-center rounded-xl shrink-0">
            <Users className="w-6 h-6" />
         </div>
@@ -91,7 +91,7 @@ export function AllReportsTable() {
   const rejectedCnt = reports.filter(r => r.status === "REJECTED").length;
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-white shadow-xl mb-6 flex flex-col xl:flex-row gap-8">
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-slate-800 dark:text-white shadow-xl mb-6 flex flex-col xl:flex-row gap-8">
       
       <div className="xl:w-2/3">
           <div className="flex justify-between items-center mb-6">
@@ -208,3 +208,4 @@ export function DispatchLogsTable() {
 
   );
 }
+
