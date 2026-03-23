@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require("fs");
 
 const content = `import Link from "next/link";
 import { ChevronRight, Play, Camera, Activity, Truck, MapPin, ShieldCheck, Zap, Lock, Database, Clock } from "lucide-react";
@@ -307,4 +307,4 @@ export default function LandingPage() {
 }
 `;
 
-fs.writeFileSync('app/page.tsx', content);
+fs.writeFileSync("app/page.tsx", content);
