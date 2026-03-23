@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Zap } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function PublicHeader() {
   return (
@@ -27,6 +28,7 @@ export function PublicHeader() {
         </Link>
       </nav>
       <div className="flex items-center gap-4">
+        <ThemeToggle />
         <Link
           href="/login"
           className="px-5 py-2 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-sm font-semibold hover:opacity-90 transition"

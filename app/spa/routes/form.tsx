@@ -60,7 +60,7 @@ export function SpaFormRoute() {
               />
               {field.state.meta.isTouched && field.state.meta.errors.length ? (
                 <p className="text-sm text-red-600">
-                  {field.state.meta.errors.join(", ")}
+                  {field.state.meta.errors.map((err: any) => typeof err === 'string' ? err : err?.message || 'Invalid value').join(', ')}
                 </p>
               ) : null}
             </div>
@@ -80,7 +80,7 @@ export function SpaFormRoute() {
               />
               {field.state.meta.isTouched && field.state.meta.errors.length ? (
                 <p className="text-sm text-red-600">
-                  {field.state.meta.errors.join(", ")}
+                  {field.state.meta.errors.map((err: any) => typeof err === 'string' ? err : err?.message || 'Invalid value').join(', ')}
                 </p>
               ) : null}
             </div>
@@ -100,7 +100,7 @@ export function SpaFormRoute() {
               />
               {field.state.meta.isTouched && field.state.meta.errors.length ? (
                 <p className="text-sm text-red-600">
-                  {field.state.meta.errors.join(", ")}
+                  {field.state.meta.errors.map((err: any) => typeof err === 'string' ? err : err?.message || 'Invalid value').join(', ')}
                 </p>
               ) : null}
             </div>
@@ -146,3 +146,4 @@ export function SpaFormRoute() {
     </div>
   );
 }
+

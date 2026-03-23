@@ -104,7 +104,7 @@ export default function RegisterPage() {
               </div>
               {field.state.meta.errors.length > 0 && (
                 <p className="text-red-400 text-sm mt-1 ml-2" role="alert">
-                  {field.state.meta.errors.join(", ")}
+                  {field.state.meta.errors.map((err: any) => typeof err === 'string' ? err : err?.message || 'Invalid value').join(', ')}
                 </p>
               )}
             </div>
@@ -133,7 +133,7 @@ export default function RegisterPage() {
               </div>
               {field.state.meta.errors.length > 0 && (
                 <p className="text-red-400 text-sm mt-1 ml-2" role="alert">
-                  {field.state.meta.errors.join(", ")}
+                  {field.state.meta.errors.map((err: any) => typeof err === 'string' ? err : err?.message || 'Invalid value').join(', ')}
                 </p>
               )}
             </div>
@@ -170,7 +170,7 @@ export default function RegisterPage() {
               </select>
               {field.state.meta.errors.length > 0 && (
                 <p className="text-red-400 text-sm mt-1 ml-2" role="alert">
-                  {field.state.meta.errors.join(", ")}
+                  {field.state.meta.errors.map((err: any) => typeof err === 'string' ? err : err?.message || 'Invalid value').join(', ')}
                 </p>
               )}
             </div>
@@ -199,7 +199,7 @@ export default function RegisterPage() {
               </div>
               {field.state.meta.errors.length > 0 && (
                 <p className="text-red-400 text-sm mt-1 ml-2" role="alert">
-                  {field.state.meta.errors.join(", ")}
+                  {field.state.meta.errors.map((err: any) => typeof err === 'string' ? err : err?.message || 'Invalid value').join(', ')}
                 </p>
               )}
             </div>
@@ -228,7 +228,7 @@ export default function RegisterPage() {
               </div>
               {field.state.meta.errors.length > 0 && (
                 <p className="text-red-400 text-sm mt-1 ml-2" role="alert">
-                  {field.state.meta.errors.join(", ")}
+                  {field.state.meta.errors.map((err: any) => typeof err === 'string' ? err : err?.message || 'Invalid value').join(', ')}
                 </p>
               )}
             </div>
@@ -275,3 +275,4 @@ export default function RegisterPage() {
     </div>
   );
 }
+
